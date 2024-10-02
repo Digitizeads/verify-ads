@@ -1374,6 +1374,52 @@ textarea {
 
 
 
+ /* Popup and fade-in/out animations */
+ .thank-you-popup {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: white;
+  padding: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  z-index: 1000;
+  text-align: center;
+}
+
+.thank-you-popup.fade-in {
+  opacity: 1;
+  transition: opacity 0.5s ease-in;
+}
+
+.thank-you-popup.fade-out {
+  opacity: 0;
+  transition: opacity 0.5s ease-out;
+}
+
+.thank-you-content h2 {
+  margin-bottom: 10px;
+}
+
+.news-btn{
+  margin-top: 6px;
+}
+
+/* .close-thank-you-btn {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+  border-radius: 5px;
+  margin-top: 15px;
+}
+
+.close-thank-you-btn:hover {
+  background-color: #0056b3;
+} */
+
 /*-----------------------------------*\ 
  * #FOOTER
 \*-----------------------------------*/

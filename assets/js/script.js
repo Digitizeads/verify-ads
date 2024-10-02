@@ -178,10 +178,44 @@ window.addEventListener("load", () => {
 
 
 /* newsletter */
-document.querySelector('.newsletter-form').addEventListener('submit', function(e) {
+/* document.querySelector('.newsletter-form').addEventListener('submit', function(e) {
   e.preventDefault();
   const email = document.querySelector('.email-input').value;
   if (email) {
     alert('Thank you for subscribing!');
   }
-});
+}); */
+
+
+
+ // Handle form submission
+  // Handle form submission
+  document.querySelector('.newsletter-form').addEventListener('submit', function(event) {
+    event.preventDefault(); // Prevent form from submitting normally
+
+    // Create thank you popup
+    const thankYouPopup = document.createElement('div');
+    thankYouPopup.classList.add('thank-you-popup', 'fade-in');
+    thankYouPopup.innerHTML = `
+      <div class="thank-you-content">
+        <h2>Thank You! 😊</h2>
+        <p>We have received your subscription. You will start receiving updates soon.</p>
+        <a href="index.html">
+          <div class="news-btn"><button class="btn btn-primary close-thank-you-btn">OK</button></div>
+        </a>
+      </div>
+    `;
+
+    // Append the thank you popup to the body
+    document.body.appendChild(thankYouPopup);
+
+    // Close the thank you popup when the close button is clicked
+    const closeThankYouBtn = thankYouPopup.querySelector('.close-thank-you-btn');
+    closeThankYouBtn.addEventListener('click', function() {
+      thankYouPopup.classList.remove('fade-in');
+      thankYouPopup.classList.add('fade-out');
+      setTimeout(() => {
+        document.body.removeChild(thankYouPopup);
+      }, 500); // Timing should match CSS transition duration
+    });
+  });

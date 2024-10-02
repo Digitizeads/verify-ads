@@ -870,56 +870,60 @@ body {
     }
     
     
-   .thank-you-popup {
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    background-color: #fff;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 10px 10px rgba(0, 0, 0, 0.1);
-    text-align: center;
-    opacity: 0;
-    z-index: 1000;
-    transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
-    transform: translate(-50%, -60%);
-    display: none;
-  }
+    /* Popup and fade-in/out animations */
+    .thank-you-popup {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 10px 10px rgba(0, 0, 0, 0.1);
+      text-align: center;
+      opacity: 0;
+      z-index: 1000;
+      transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
+      transform: translate(-50%, -60%); /* Start higher for the animation */
+    }
+    
+    .thank-you-popup.fade-in {
+      opacity: 1;
+      transform: translate(-50%, -50%);
+    }
+    
+    .thank-you-popup.fade-out {
+      opacity: 0;
+      transform: translate(-50%, -60%);
+    }
+    
+    /* Thank You Popup Content */
+    .thank-you-popup h2 {
+      margin-bottom: 10px;
+      color: var(--oxford-blue);
+    }
+    
+    .thank-you-popup p {
+      margin-bottom: 20px;
+      color: var(--oxford-blue);
+    }
+    
+    .close-thank-you-btn {
+      background-color: #ff7300;
+      color: var(--silver-chalice);
+      padding: 10px 20px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      margin-left: 0rem;
+    }
+    
+    .close-thank-you-btn:hover {
+      background-color: #ff4000;
+      color: #f1f1f1;
+    }
+
   
-  .thank-you-popup.fade-in {
-    display: block;
-    opacity: 1;
-    transform: translate(-50%, -50%);
-  }
-  
-  .thank-you-popup.fade-out {
-    opacity: 0;
-    transform: translate(-50%, -60%);
-  }
-  
-  /* Thank You Popup Content */
-  .thank-you-popup h2 {
-    margin-bottom: 10px;
-    color: var(--oxford-blue);
-  }
-  
-  .thank-you-popup p {
-    margin-bottom: 20px;
-    color: var(--oxford-blue);
-  }
-  
-  .close-thank-you-btn {
-    background-color: #ff7300;
-    color: white;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-  }
-  
-  .close-thank-you-btn:hover {
-    background-color: #ff4000;
-  }
+
     
      

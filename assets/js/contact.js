@@ -29,39 +29,32 @@ document.querySelector('.map').addEventListener('click', function() {
   window.open(url, '_blank');
 });
 
-// Get the form element and the thank-you popup element
-const form = document.querySelector('#contactForm');
-const contactFormPopup = document.getElementById('contactFormPopup');
+document.getElementById('contactForm').addEventListener('submit', function(event) {
+  event.preventDefault(); // Prevent the form from actually submitting
 
-// Event listener for form submission
-form.addEventListener('submit', function(event) {
-  event.preventDefault(); // Prevent form submission
+  // Create thank you popup
+  const thankYouPopup = document.createElement('div');
+  thankYouPopup.classList.add('thank-you-popup', 'fade-in');
+  thankYouPopup.innerHTML = `
+    <div class="thank-you-content">
+      <h2>Thank You! 😊</h2>
+      <p>We have received your message. Our team will get back to you shortly.</p>
+      <a href="index.html">
+        <button class="btn btn-primary close-thank-you-btn">Go to Home</button>
+      </a>
+    </div>
+  `;
 
-  // Add fade-in effect to the thank-you popup
-  contactFormPopup.classList.add('fade-in');
-  contactFormPopup.style.display = 'block';
+  // Append the thank you popup to the body
+  document.body.appendChild(thankYouPopup);
 
-  // Optional: Reset the form fields after submission
-  form.reset();
-
-  // Auto-hide the thank-you popup after 5 seconds (optional)
-  setTimeout(() => {
-    contactFormPopup.classList.remove('fade-in');
-    contactFormPopup.classList.add('fade-out');
+  // Close the thank you popup when the close button is clicked
+  const closeThankYouBtn = thankYouPopup.querySelector('.close-thank-you-btn');
+  closeThankYouBtn.addEventListener('click', function() {
+    thankYouPopup.classList.remove('fade-in');
+    thankYouPopup.classList.add('fade-out');
     setTimeout(() => {
-      contactFormPopup.style.display = 'none';
-      contactFormPopup.classList.remove('fade-out');
-    }, 500); // Match the CSS transition duration
-  }, 5000); // Time before auto-hiding the popup
-});
-
-// Close thank you popup when "Go to Home" button is clicked
-const closeThankYouBtn = document.querySelector('.close-thank-you-btn');
-closeThankYouBtn.addEventListener('click', function() {
-  contactFormPopup.classList.remove('fade-in');
-  contactFormPopup.classList.add('fade-out');
-  setTimeout(() => {
-    contactFormPopup.style.display = 'none';
-    contactFormPopup.classList.remove('fade-out');
-  }, 500); // Timing should match CSS transition duration
+      document.body.removeChild(thankYouPopup);
+    }, 500); // Timing should match CSS transition duration
+  });
 });

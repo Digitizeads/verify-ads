@@ -2,7 +2,7 @@
 $servername = "localhost";
 $username = "root";  // Replace with your MySQL username
 $password = "";      // Replace with your MySQL password
-$dbname = "newsletter_db";
+$dbname = "verifyads";
 
 // Create connection
 $conn = new mysqli($servername, $username, $password, $dbname);
@@ -19,7 +19,7 @@ if (isset($_POST['signup'])) {
     $email = $_POST['signup_email'];
     $password = password_hash($_POST['signup_password'], PASSWORD_BCRYPT);  // Hash the password
 
-    $sql = "INSERT INTO admins (email, password) VALUES (?, ?)";
+    $sql = "INSERT INTO user (emailid, password) VALUES (?, ?)";
     $stmt = $conn->prepare($sql);
     $stmt->bind_param("ss", $email, $password);
 
@@ -37,7 +37,7 @@ if (isset($_POST['login'])) {
     $email = $_POST['login_email'];
     $password = $_POST['login_password'];
 
-    $sql = "SELECT * FROM admins WHERE email = ?";
+    $sql = "SELECT * FROM user WHERE emailid = ?";
     $stmt = $conn->prepare($sql);
     $stmt->bind_param("s", $email);
     $stmt->execute();
@@ -50,7 +50,7 @@ if (isset($_POST['login'])) {
         if (password_verify($password, $user['password'])) {
             session_start();
             $_SESSION['email'] = $user['email'];
-            header('Location: dashboard.php');
+            header('Location: home');
             exit;
         } else {
             $message = "Invalid password. Please try again.";
@@ -176,18 +176,17 @@ $conn->close();
     </div>
 
     <script>
-        document.getElementById('toggle-signup').addEventListener('click', function () {
+        document.getElementById('toggle-signup').addEventListener('click', function() {
             document.getElementById('login-form').style.display = 'none';
             document.getElementById('signup-form').style.display = 'block';
             document.getElementById('form-title').innerText = 'Admin Sign Up';
         });
 
-        document.getElementById('toggle-login').addEventListener('click', function () {
+        document.getElementById('toggle-login').addEventListener('click', function() {
             document.getElementById('signup-form').style.display = 'none';
             document.getElementById('login-form').style.display = 'block';
             document.getElementById('form-title').innerText = 'Admin Login';
         });
-
     </script>
 </body>
 

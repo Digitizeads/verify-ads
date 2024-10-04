@@ -104,33 +104,53 @@
 }
 
 /* About Us Section */
+/* Hero Section */
 .our-story-section {
   display: flex;
-  justify-content: space-between;
   align-items: center;
-  padding: 60px 20px;
-  background-color: hsl(0, 0%, 78%);
-  min-height: 400px;
+  justify-content: space-between;
+  padding: 50px 100px;
+  background-color: #c8ccd1;
+  min-height: 400px; /* Increased the height */
 }
 
 .our-story-content {
-  max-width: 600px;
+  max-width: 50%;
 }
 
-.our-story-content h2 {
-  font-size: 2.5rem;
+.our-story-content h1 {
+  font-size: 3rem;
+  color: #2f3a49;
   margin-bottom: 20px;
 }
 
 .our-story-content p {
-  font-size: 1.1rem;
-  color: hsl(231, 61%, 22%);
+  font-size: 1.2rem;
+  color: #2f3a49;
+  line-height: 1.5;
 }
 
 .our-story-image img {
-  max-width: 100%;
+  max-width: 450px;
   border-radius: 10px;
-  box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+}
+
+@media (max-width: 768px) {
+  .our-story-section {
+      flex-direction: column;
+      text-align: center;
+      padding: 20px;
+      min-height: auto; /* Adjust height for smaller screens */
+  }
+
+  .our-story-content {
+      max-width: 100%;
+  }
+
+  .our-story-image img {
+      max-width: 100%;
+      margin-top: 20px;
+  }
 }
 
 

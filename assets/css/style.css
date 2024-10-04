@@ -734,78 +734,7 @@ header .container {
   animation: fade-in 3s ease-in-out forwards 0.3s; /* Delayed and slow fade-in for shape */
 }
 
-/*-----------------------------------*\ 
- * #ABOUT
-\*-----------------------------------*/
-.aboutus {
-  margin-left: 5%;
-  /* margin-right: 2%; */
-  margin-bottom: 8%;
-}
-.aboutus-container {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(45%, 50%));
-  width: auto;
-}
-.aboutus-image {
-  width: 100%;
-}
-.about-img {
-  height: 100%;
-  width: 100%;
-}
-.aboutus-text {
-  width: 100%;
-}
-.aboutus-us-items {
-  display: flex;
-  flex-direction: column;
-  margin: 7rem 3rem;
-}
-.aboutus-main-heading {
-  font-size: 1.6rem;
-  color: var(--bittersweet);
-  font-weight: normal;
-}
-.aboutus-description {
-  font-size: 2.5rem;
-  margin-top: -1.5px;
-  color: var(--oxford-blue);
-  font-weight: bolder;
-}
-.color-full {
-  color: var(--bittersweet);
-}
-.aboutus-feature {
-  display: flex;
-  flex-direction: column;
-  padding-top: 20px;
-  gap: 1.5rem; /* Adds spacing between features */
-}
 
-.aboutus-feature-items {
-  font-size: 1.3rem;
-  margin-right: 20%; /* Reduced margin to allow more space for text */
-  color: var(--oxford-blue);
-  line-height: 1.6; /* Improves readability by increasing line height */
-}
-
-.aboutus-feature-one {
-  display: flex;
-  gap: 1rem; /* Adds space between icon and text */
-  align-items: center; /* Aligns icon and text vertically */
-  margin-top: 0.9rem;
-}
-
-.aboutus-icon {
-  background-color: var(--bittersweet); /* Matches your existing color scheme */
-  border-radius: 50%;
-  text-align: center;
-  padding: 0.7rem;
-  color: #fff; /* White icon color for better contrast */
-  font-size: 1.2rem; /* Adjusts icon size */
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Adds a subtle shadow for depth */
-}
 
 .about {
   position: relative;

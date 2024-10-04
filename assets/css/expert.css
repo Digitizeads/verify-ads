@@ -187,7 +187,7 @@ body {
 /* Header Styles */
 .experts {
   height: 50vh;
-  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.8)), url(image/virtual.jpg);
+  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.8)), url(../image/virtual.jpg);
   background-position: 50% 20%;
   background-repeat: no-repeat;
   background-size: 100%; /* Zoom out the image */

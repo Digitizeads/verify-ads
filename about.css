@@ -6,7 +6,6 @@
   padding: 50px 100px;
   background-color: #c8ccd1;
   min-height: 400px; /* Increased the height */
-  margin-top: 30px;
 }
 
 .hero-content {
@@ -48,29 +47,21 @@
   }
 }
 
-/* 
-.cta-button {
-  padding: 10px 20px;
-  background-color: hsl(53, 100%, 50%);
-  color: hsl(231, 100%, 8%);
-  border: none;
-  border-radius: 5px;
-  text-decoration: none;
-  font-size: 1rem;
-  transition: background 0.3s;
-}
-
-.cta-button:hover {
-  background-color: hsl(231, 100%, 22%);
-  color: hsl(0, 0%, 100%);
-} */
-
 /* Mission Section */
 .mission-section {
-  padding: 60px 20px;
+  height: 50vh;
+  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.8)),
+    url(.//assets/image/blog.jpg);
+  background-position: 50% 100%;
+  background-repeat: no-repeat;
+  background-size: 100%; /* Zoom out the image */
+  background-attachment: fixed;
   text-align: center;
-  background-color: hsl(231, 100%, 8%);
-  color: hsl(0, 0%, 100%);
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 .mission-section h2 {
@@ -89,6 +80,7 @@
   align-items: center;
   padding: 60px 20px;
   background-color: hsl(0, 0%, 100%);
+  min-height: 400px;
 }
 
 .about-content {
@@ -118,6 +110,7 @@
   align-items: center;
   padding: 60px 20px;
   background-color: hsl(0, 0%, 78%);
+  min-height: 400px;
 }
 
 .our-story-content {
@@ -141,39 +134,13 @@
 }
 
 
-/* Testimonials Section */
-.testimonials-section {
-  padding: 60px 20px;
-  text-align: center;
-  background-color: hsl(210, 60%, 98%);
-}
-
-.testimonials-container {
-  display: flex;
-  flex-direction: column;
-  gap: 30px;
-  max-width: 800px;
-  margin: 0 auto;
-}
-
-.testimonial p {
-  font-size: 1.1rem;
-  font-style: italic;
-}
-
-.testimonial h4 {
-  font-size: 1.2rem;
-  font-weight: bold;
-  margin-top: 10px;
-  color: hsl(231, 61%, 22%);
-}
-
 /* Call to Action Section */
 .cta-section {
   padding: 60px 20px;
   background-color: hsl(231, 100%, 8%);
   color: hsl(0, 0%, 100%);
   text-align: center;
+  min-height: 300px;
 }
 
 .cta-section h2 {

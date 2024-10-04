@@ -107,9 +107,8 @@ html {
 }
 
 body {
-    background: var(--white);
-    overflow-x: hidden;
-   
+  background: var(--white);
+  overflow-x: hidden;
 }
 
 ::-webkit-scrollbar {
@@ -208,7 +207,11 @@ body {
 
 .btn-primary:hover,
 .btn-primary:focus {
-  background: linear-gradient(45deg,hsl(2, 90%, 70%), hsl(21, 100%, 50%)); /* Gradient background on hover */
+  background: linear-gradient(
+    45deg,
+    hsl(2, 90%, 70%),
+    hsl(21, 100%, 50%)
+  ); /* Gradient background on hover */
   color: var(--white);
   border-color: hsl(2, 90%, 60%);
   box-shadow: 0 8px 16px rgba(255, 60, 0, 0.653); /* More pronounced shadow on hover */
@@ -279,7 +282,7 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  font-family: 'Poppins', sans-serif;
+  font-family: "Poppins", sans-serif;
   font-size: 14px;
   opacity: 0;
   animation: fade-in 1.5s ease-in-out forwards;
@@ -293,7 +296,8 @@ body {
   animation: fade-in 2s ease-in-out forwards 0.5s;
 }
 
-.contact-info .phone, .contact-info .email {
+.contact-info .phone,
+.contact-info .email {
   display: flex;
   align-items: center;
   gap: 8px;
@@ -353,17 +357,20 @@ body {
 }
 
 /* Phone and Email hover effects */
-.phone:hover, .email:hover {
+.phone:hover,
+.email:hover {
   color: #ff4500;
   transform: translateY(-2px);
 }
 
-.phone i:hover, .email i:hover {
+.phone i:hover,
+.email i:hover {
   color: #fff;
   transform: translateY(-2px);
 }
 
-.phone:hover, .email:hover {
+.phone:hover,
+.email:hover {
   box-shadow: 0 8px 16px rgba(255, 60, 0, 0.653);
 }
 
@@ -443,8 +450,6 @@ body {
     height: 40px;
   }
 }
-
-
 
 /* Header Section */
 header {
@@ -593,7 +598,7 @@ header .container {
 /* Hire Developer Button Section */
 .hire-developer-wrapper {
   position: absolute;
-  bottom: -125px; 
+  bottom: -125px;
   right: 30px;
   z-index: 10;
   perspective: 600px;
@@ -1048,7 +1053,7 @@ header .container {
   margin-bottom: 30px;
 }
 
-.section-text{
+.section-text {
   padding-bottom: 0px;
 }
 
@@ -1259,8 +1264,6 @@ textarea {
   font-weight: bold;
 }
 
-
-
 .boxes {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -1299,13 +1302,21 @@ textarea {
 }
 
 @keyframes move-left {
-  0% { transform: translateX(100vw); }
-  100% { transform: translateX(-100vw); }
+  0% {
+    transform: translateX(100vw);
+  }
+  100% {
+    transform: translateX(-100vw);
+  }
 }
 
 @keyframes move-right {
-  0% { transform: translateX(-100vw); }
-  100% { transform: translateX(100vw); }
+  0% {
+    transform: translateX(-100vw);
+  }
+  100% {
+    transform: translateX(100vw);
+  }
 }
 
 /* Responsive Design for smaller screens */
@@ -1315,9 +1326,7 @@ textarea {
   }
 }
 
-
 /* newsletter */
-
 
 .newsletter-container {
   display: flex;
@@ -1372,10 +1381,8 @@ textarea {
   box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
 }
 
-
-
- /* Popup and fade-in/out animations */
- .thank-you-popup {
+/* Popup and fade-in/out animations */
+.thank-you-popup {
   position: fixed;
   top: 50%;
   left: 50%;
@@ -1402,7 +1409,7 @@ textarea {
   margin-bottom: 10px;
 }
 
-.news-btn{
+.news-btn {
   margin-top: 6px;
 }
 
@@ -1435,7 +1442,6 @@ footer {
 .footer-brand {
   margin-bottom: 20px;
 }
-
 
 .footer-text {
   color: rgb(255, 255, 255);

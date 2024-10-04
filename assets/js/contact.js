@@ -131,3 +131,18 @@ document.getElementById('contactForm').addEventListener('submit', function(event
       document.getElementById('contactForm').reset();
   }
 });
+
+
+ // Get the 'Other' checkbox and the text area
+ const otherCheckbox = document.getElementById('other-checkbox');
+ const otherTextarea = document.getElementById('other-textarea');
+
+ // Add an event listener to the 'Other' checkbox
+ otherCheckbox.addEventListener('change', function() {
+   // Toggle the visibility of the text area
+   if (this.checked) {
+     otherTextarea.style.display = 'block';
+   } else {
+     otherTextarea.style.display = 'none';
+   }
+ });

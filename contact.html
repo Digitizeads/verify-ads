@@ -132,8 +132,8 @@
 
 
   <section class="contact-section">
-    <h1>Contact Us</h1>
-    <p>Any questions or remarks? Just write us a message!</p>
+    <h1>Get In Touch</h1>
+   <!--  <p>Any questions or remarks? Just write us a message!</p> -->
 
     <div class="contact-section">
       <form class="contact-form" id="contactForm">
@@ -178,7 +178,14 @@
             <label><input type="checkbox" name="service" value="logo-design"> Logo Design</label>
             <label><input type="checkbox" name="service" value="social-media-marketing"> Social Media Marketing</label>
             <label><input type="checkbox" name="service" value="website-audit"> Website Audit</label>
+            <label><input type="checkbox" id="other-checkbox" name="service" value="other"> Other</label>
           </div>
+        </div>
+
+        <!-- Hidden text area -->
+        <div id="other-textarea" style="display: none;">
+          <label for="other-service">Please specify:</label>
+          <textarea id="other-service" name="other-service"></textarea>
         </div>
 
         <div class="radio">

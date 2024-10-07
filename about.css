@@ -98,9 +98,14 @@
 }
 
 .about-image img {
-  max-width: 100%;
-  border-radius: 10px;
-  box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+  max-width: 80%;
+  margin-top: 20px;
+  margin-left: 3rem;
+  border-radius: 8px;
+  -webkit-border-radius: 8px;
+  -moz-border-radius: 8px;
+  -ms-border-radius: 8px;
+  -o-border-radius: 8px;
 }
 
 /* About Us Section */

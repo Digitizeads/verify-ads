@@ -821,31 +821,51 @@ header .container {
   }
 
   
-  .chooseus{
+  .chooseus {
     position: relative;
     background-color: #ffffff;
-    padding: 100px 0;
+    padding: 50px 0;
     padding-bottom: var(--fs-5);
+    text-align: center;
   }
   .chooseus-card {
     background: var(--white);
-    padding: 60px;
+    padding: 20px;
     border-radius: 12px;
-    box-shadow: 0 19px 19px hsla(15, 100%, 50%, 0.1);
-    /* border: 1px rgb(100, 100, 100) solid; */
+    box-shadow: 0px 19px 19px hsla(13, 100%, 50%, 0.1);
     height: 300px;
   }
-  .chooseus-card:hover{
+  
+  .chooseus-card .card-icon {
+    color: var(--bittersweet);
+    font-size: 45px;
+    width: max-content;
+    margin-inline: auto;
+    margin-bottom: 15px;
+  }
+  
+  .chooseus-card .card-title {
+    margin-bottom: 15px;
+  }
+  
+  .chooseus-card .card-text {
+    color: var(--davys-gray);
+  }
+  
+  .chooseus-card:hover {
     transform: scale(1.1);
     -webkit-transform: scale(1.1);
     -moz-transform: scale(1.1);
     -ms-transform: scale(1.1);
     -o-transform: scale(1.1);
   }
-  .choose-top{
-    margin-bottom: 30px;
+  .choose-top {
+    margin-bottom: 5px;
   }
   
+  .section-text {
+    padding-bottom: 0px;
+  }
   
   
   /*-----------------------------------*\ 

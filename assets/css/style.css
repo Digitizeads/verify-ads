@@ -981,20 +981,11 @@ header .container {
 
 /* Base Styles for Contact Section */
 .contact {
-  padding: 100px 0;
-  background: var(--silver-chalice);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-top: 1rem;
-}
-
-.contact-box {
   background-color: var(--silver-chalice);
   padding: 40px;
   max-width: 1500px;
   text-align: center;
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+  box-shadow: 2px 8px 20px rgba(0, 0, 0, 0.1);
   border-radius: 12px;
   background-image: url('../image/blog.jpg'); /* Add your background image here */
   background-size: cover; /* Ensures the image covers the box */
@@ -1003,8 +994,13 @@ header .container {
   position: relative; /* Allows control over z-index for the content */
   z-index: 1;
   background-attachment: fixed;
+  margin-top: 4rem;
 }
-
+/* 
+.contact-box {
+ 
+}
+ */
 .contact-box::before {
   content: "";
   position: absolute;
@@ -1021,7 +1017,7 @@ header .container {
   font-size: 32px;
   color: #333;
   margin-bottom: 20px;
-  margin-left: 21rem;
+  margin-left: 29rem;
 }
 
 .contact-description {
@@ -1145,7 +1141,7 @@ header .container {
   background: #fff;
   padding: 40px;
   border-radius: 12px;
-  box-shadow: 0 0 15px rgba(255, 55, 0, 0.1);
+  /* box-shadow: 0 0 15px rgba(255, 55, 0, 0.1); */
   text-align: center;
   width: auto;
   margin: 20px;

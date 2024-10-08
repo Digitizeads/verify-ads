@@ -925,55 +925,6 @@ header .container {
   padding-bottom: 0px;
 }
 
-/*-----------------------------------*\ 
- * #CTA
-\*-----------------------------------*/
-
-.cta {
-  padding: 120px 0;
-}
-
-.cta-card {
-  background: linear-gradient(to top, var(--bittersweet) 0, var(--french-rose));
-  padding: 80px 36px;
-  border-radius: 20px;
-  text-align: center;
-}
-
-.cta-title {
-  color: var(--white);
-  font-size: var(--fs-1);
-  font-weight: var(--fw-600);
-  line-height: 1.3;
-  margin-bottom: 20px;
-}
-
-.cta-text {
-  color: var(--white);
-  font-size: var(--fs-6);
-  margin-bottom: 50px;
-}
-
-.cta input {
-  color: var(--white);
-  padding: 10px 15px;
-  border-bottom: 1px solid;
-  margin-bottom: 30px;
-}
-
-.cta input::placeholder {
-  color: inherit;
-}
-
-.cta .btn-secondary {
-  color: var(--white);
-  margin-inline: auto;
-}
-
-.testimonial {
-  padding-right: 20px;
-  background-color: rgb(231, 231, 231);
-}
 
 /*-----------------------------------*\ 
  * #CONTACT
@@ -1008,24 +959,23 @@ header .container {
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(255, 255, 255, 0.9); /* Adds a white overlay to improve text readability */
+  background: rgba(255, 255, 255, 0.548); /* Adds a white overlay to improve text readability */
   border-radius: 12px; /* Matches the border radius of the box */
   z-index: -1;
 }
 
 .contact-title {
   font-size: 32px;
-  color: #333;
+  color: var(--royal-blue-dark);
   margin-bottom: 20px;
-  margin-left: 29rem;
 }
 
 .contact-description {
   font-size: 18px;
-  color: #666;
+  color: var(--black);
   margin-bottom: 30px;
   line-height: 1.6;
-  font-family: 'Poppins', sans-serif;
+  font-weight: 35px;
 }
 
 
@@ -1071,6 +1021,7 @@ header .container {
     font-size: 14px;
   }
 }
+
 
 
 .carousel-container {
@@ -1594,64 +1545,76 @@ footer {
   width: 100%;
   padding: 0px 8%;
 }
+
 .testimonials-section .section-header {
   max-width: 700px;
   text-align: center;
   margin: 30px auto 40px;
   padding-bottom: 10px;
 }
+
 .section-header h1 {
   position: relative;
   font-size: 36px;
   color: var(--primary-clr);
 }
+
 .testimonials-container {
   position: relative;
+  display: flex;
+  flex-direction: column; /* Stacks items vertically */
+  align-items: center; /* Centers items horizontally */
 }
+
 .testimonials-container .testimonial-card {
   padding: 20px;
 }
+
 .testimonial-card .test-card-body {
   background-color: var(--card-clr);
   box-shadow: 2px 2px 20px rgba(0, 0, 0, 0.12);
   padding: 20px;
   border-radius: 10px;
-  -webkit-border-radius: 10px;
-  -moz-border-radius: 10px;
-  -ms-border-radius: 10px;
-  -o-border-radius: 10px;
 }
+
 .test-card-body .quote {
   display: flex;
   align-items: center;
 }
+
 .test-card-body .quote i {
   font-size: 45px;
   color: var(--heading-clr);
   margin-right: 20px;
 }
+
 .test-card-body .quote h2 {
   color: var(--heading-clr);
 }
+
 .test-card-body p {
   margin: 10px 0px 15px;
   font-size: 14px;
   line-height: 1.5;
   color: var(--text-clr);
 }
+
 .test-card-body .ratings {
   margin-top: 20px;
 }
+
 .test-card-body .ratings i {
   font-size: 17px;
   color: var(--primary-clr);
   cursor: pointer;
 }
+
 .testimonial-card .profile {
   display: flex;
   align-items: center;
   margin-top: 25px;
 }
+
 .profile .profile-image {
   width: 55px;
   height: 55px;
@@ -1659,33 +1622,40 @@ footer {
   overflow: hidden;
   margin-right: 15px;
 }
+
 .profile .profile-image img {
   width: 100%;
   height: 100%;
   border-radius: 50%;
   object-fit: cover;
 }
+
 .profile .profile-desc {
   display: flex;
   flex-direction: column;
 }
+
 .profile-desc span:nth-child(1) {
   font-size: 24px;
   font-weight: bold;
   color: var(--primary-clr);
 }
+
 .profile-desc span:nth-child(2) {
   font-size: 15px;
   color: var(--text-clr);
 }
+
 .owl-nav {
   position: absolute;
   right: 20px;
   bottom: -10px;
 }
+
 .owl-nav button {
   border-radius: 50% !important;
 }
+
 .owl-nav .owl-prev i,
 .owl-nav .owl-next i {
   padding: 10px !important;
@@ -1696,88 +1666,67 @@ footer {
   cursor: pointer;
   transition: 0.4s;
 }
+
 .owl-nav .owl-prev i:hover,
 .owl-nav .owl-next i:hover {
   background-color: var(--primary-clr) !important;
   color: #e9e9e9;
 }
+
 .owl-dots {
   margin-top: 15px;
 }
+
 .owl-dots .owl-dot span {
   background-color: #434753 !important;
   padding: 6px !important;
 }
+
 .owl-dot.active span {
   background-color: var(--primary-clr) !important;
 }
 
-.review-btn {
-  font-size: var(--fs-6); /* You can define this variable in your root CSS */
-  text-transform: uppercase;
-  font-weight: var(--fw-600); /* Define this variable for font weight */
-  padding: 12px 32px; /* Adjusted padding for a balanced look */
-  border: none; /* Removed the border */
-  border-radius: 8px; /* Slightly larger for a rounded effect */
-  display: inline-flex;
-  align-items: center; /* Vertically center the content */
-  justify-content: center; /* Centers the text within the button */
-  background: var(--bittersweet); /* Retained original background color */
-  color: white;
-  box-shadow: 0 4px 8px rgba(255, 47, 0, 0.1); /* Subtle shadow for depth */
-  transition: all 0.3s ease; /* Smooth transition */
-  position: relative;
-  overflow: hidden; /* Ensures gradient background doesn't overflow */
-  margin-top: 20px;
-  margin-left: 420px;
-  cursor: pointer;
-  height: 3.5rem;
+/* Center the Review Button */
+#reviewButton {
+  display: block;
+  margin: 30px auto; /* Center the button horizontally */
+  padding: 14px 35px; /* Adjust button padding */
+  font-size: 16px; /* Font size for button */
 }
 
-.review-btn:hover,
-.review-btn:focus {
-  background: linear-gradient(
-    45deg,
-    hsl(2, 90%, 70%),
-    hsl(21, 100%, 50%)
-  ); /* Gradient background on hover */
-  color: var(--white);
-  border-color: hsl(2, 90%, 60%);
-  box-shadow: 0 8px 16px rgba(255, 60, 0, 0.653); /* More pronounced shadow on hover */
-  transform: translateY(-2px); /* Slight lift effect */
+/* Responsive Design for Tablets */
+@media (max-width: 768px) {
+  .section-header h1 {
+    font-size: 28px;
+  }
+
+  .test-card-body p {
+    font-size: 16px;
+  }
+
+  #reviewButton {
+    padding: 12px 30px; /* Adjusted padding for smaller screens */
+    font-size: 14px; /* Adjusted font size */
+  }
 }
 
-.review-btn::after {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 0;
-  height: 100%;
-  background: rgba(255, 255, 255, 0.3); /* Light overlay effect */
-  transition: all 0.3s ease;
+/* Responsive Design for Mobile Devices */
+@media (max-width: 480px) {
+  .section-header h1 {
+    font-size: 24px;
+  }
+
+  .test-card-body p {
+    font-size: 14px;
+  }
+
+  #reviewButton {
+    padding: 10px 25px; /* Adjusted padding for smaller screens */
+    font-size: 12px; /* Adjusted font size */
+  }
 }
 
-.review-btn:hover::after {
-  width: 100%;
-}
 
-.review-icon {
-  width: 10rem;
-  height: auto;
-  display: inline-block;
-  vertical-align: middle;
-  transition: transform 0.6s ease;
-  transform-style: preserve-3d;
-  -webkit-transition: transform 0.6s ease;
-  -moz-transition: transform 0.6s ease;
-  -ms-transition: transform 0.6s ease;
-  -o-transition: transform 0.6s ease;
-}
-
-.review-icon:hover {
-  transform: rotateY(180deg); /* Flip 180 degrees on the Y-axis */
-}
 
 /*-----------------------------------*\ 
  * #RESPONSIVE
@@ -1898,18 +1847,7 @@ footer {
     min-width: max-content;
   }
 
-  /**
-   * CONTACT
-   */
-
-  .contact-title {
-    --fs-2: 32px;
-  }
-
-  .contact-banner {
-    max-width: 300px;
-    margin-inline: auto;
-  }
+  
 }
 
 /**
@@ -2048,13 +1986,7 @@ footer {
     padding-inline: 0;
   }
 
-  /**
-   * CONTACT
-   */
-
-  .contact-title {
-    --fs-2: 42px;
-  }
+  
 }
 
 /**
@@ -2224,7 +2156,7 @@ footer {
    * CONTACT
    */
 
-  .contact .container {
+/*   .contact .container {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -2242,7 +2174,7 @@ footer {
 
   .contact-form {
     width: 50%;
-  }
+  } */
 
   /**
    * FOOTER

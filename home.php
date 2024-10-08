@@ -1,3 +1,18 @@
+<?php 
+session_start(); // Start the session
+
+// Check if the user is logged in
+if (!isset($_SESSION['logged_in']) || $_SESSION['logged_in'] !== true) {
+    header('Location: admin'); // Redirect to login page if not logged in
+    exit();
+}
+
+// Prevent caching
+header("Cache-Control: no-cache, no-store, must-revalidate");
+header("Pragma: no-cache");
+header("Expires: 0");
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -40,18 +55,18 @@
     <!-- Date Filter Form -->
     <div class="row mt-4">
       <div class="col-md-12">
-        <form id="filterForm" class="d-flex justify-content-center align-items-end flex-wrap">
+        <form id="filterForm" class="d-flex justify-content-center align-items-end flex-wrap" method="GET">
           <div class="mb-3 me-3">
             <label for="fromDate" class="form-label">From Date:</label>
             <input type="date" class="form-control" id="fromDate" name="fromDate"
-              value="<?php echo isset($fromDate) ? htmlspecialchars($fromDate) : ''; ?>">
+              value="<?php echo isset($_GET['fromDate']) ? htmlspecialchars($_GET['fromDate']) : ''; ?>">
           </div>
           <div class="mb-3 me-3">
             <label for="toDate" class="form-label">To Date:</label>
             <input type="date" class="form-control" id="toDate" name="toDate"
-              value="<?php echo isset($toDate) ? htmlspecialchars($toDate) : ''; ?>">
+              value="<?php echo isset($_GET['toDate']) ? htmlspecialchars($_GET['toDate']) : ''; ?>">
           </div>
-          <button type="button" class="btn btn-primary mb-3" id="filterBtn">
+          <button type="submit" class="btn btn-primary mb-3" id="filterBtn">
             <i class="bi bi-filter"></i> Filter
           </button>
           <button type="button" class="btn btn-secondary mb-3" id="resetBtn">
@@ -95,11 +110,10 @@
             $fromDate = '';
             $toDate = '';
 
-            // Check if form has been submitted
-            if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-              // Get date filter values from POST request
-              $fromDate = isset($_POST['fromDate']) ? $_POST['fromDate'] : '';
-              $toDate = isset($_POST['toDate']) ? $_POST['toDate'] : '';
+            // Check if GET parameters are set
+            if (isset($_GET['fromDate']) && isset($_GET['toDate'])) {
+              $fromDate = $_GET['fromDate'];
+              $toDate = $_GET['toDate'];
             }
 
             // Query to fetch data with date filter
@@ -137,7 +151,9 @@
         </table>
       </div>
       <div class="col-md-12 text-end"> <!-- Align button to the right -->
-        <button id="actionButton" class="btn btn-success mt-3">Perform Action</button>
+        <?php if ($result && $result->num_rows > 0): ?>
+          <button id="actionButton" class="btn btn-success mt-3">Perform Action</button>
+        <?php endif; ?>
       </div>
     </div>
   </div>
@@ -150,38 +166,6 @@
 
   <script>
     $(document).ready(function () {
-      $('#filterBtn').click(function () {
-        // Get values from date inputs
-        var fromDate = $('#fromDate').val();
-        var toDate = $('#toDate').val();
-
-        // Ensure both dates are selected before submission
-        if (fromDate && toDate) {
-          // Create a form to submit the filter values via POST
-          var form = $('<form>', {
-            method: 'POST',
-            action: window.location.pathname
-          });
-
-          // Append the date values to the form
-          form.append($('<input>', {
-            type: 'hidden',
-            name: 'fromDate',
-            value: fromDate
-          }));
-          form.append($('<input>', {
-            type: 'hidden',
-            name: 'toDate',
-            value: toDate
-          }));
-
-          // Submit the form
-          form.appendTo('body').submit();
-        } else {
-          alert('Please select both From Date and To Date.');
-        }
-      });
-
       // Reset button functionality
       $('#resetBtn').click(function () {
         $('#fromDate').val(''); // Clear from date
@@ -233,7 +217,11 @@
               const url = URL.createObjectURL(blob);
               const a = document.createElement('a');
               a.href = url;
-              a.download = 'selected_records.xls';
+
+              // Get current date and time for file naming
+              const now = new Date();
+              const formattedDate = now.toISOString().slice(0, 19).replace(/T/, '_').replace(/:/g, '-'); // Format: YYYY-MM-DD_HH-MM-SS
+              a.download = `verifyads_newsletter_emaillist_${formattedDate}.xls`; // Set the file name
               document.body.appendChild(a);
               a.click();
               window.URL.revokeObjectURL(url);

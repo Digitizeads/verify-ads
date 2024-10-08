@@ -1,35 +1,46 @@
 <?php
+session_start();
+
 $servername = "localhost";
-$username = "root";  // Replace with your MySQL username
-$password = "";      // Replace with your MySQL password
+$username = "root";
+$password = "";
 $dbname = "verifyads";
 
 // Create connection
 $conn = new mysqli($servername, $username, $password, $dbname);
-
-// Check connection
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
 
-$message = '';  // Store any success/error messages
+$message = ''; // Store any success/error messages
 
 // Handle signup form submission
 if (isset($_POST['signup'])) {
     $email = $_POST['signup_email'];
-    $password = password_hash($_POST['signup_password'], PASSWORD_BCRYPT);  // Hash the password
+    $password = password_hash($_POST['signup_password'], PASSWORD_BCRYPT);
 
-    $sql = "INSERT INTO user (emailid, password) VALUES (?, ?)";
-    $stmt = $conn->prepare($sql);
-    $stmt->bind_param("ss", $email, $password);
+    // Check if email already exists
+    $checkEmailQuery = "SELECT * FROM user WHERE emailid = ?";
+    $checkStmt = $conn->prepare($checkEmailQuery);
+    $checkStmt->bind_param("s", $email);
+    $checkStmt->execute();
+    $checkResult = $checkStmt->get_result();
 
-    if ($stmt->execute()) {
-        $message = "Signup successful! You can now log in.";
+    if ($checkResult->num_rows > 0) {
+        $message = "Email already exists. Please choose another email.";
     } else {
-        $message = "Error during signup: " . $stmt->error;
-    }
+        $sql = "INSERT INTO user (emailid, password) VALUES (?, ?)";
+        $stmt = $conn->prepare($sql);
+        $stmt->bind_param("ss", $email, $password);
 
-    $stmt->close();
+        if ($stmt->execute()) {
+            $message = "Signup successful! You can now log in.";
+        } else {
+            $message = "Error during signup: " . $stmt->error;
+        }
+
+        $stmt->close();
+    }
 }
 
 // Handle login form submission
@@ -46,17 +57,62 @@ if (isset($_POST['login'])) {
     if ($result->num_rows > 0) {
         $user = $result->fetch_assoc();
 
-        // Verify password
         if (password_verify($password, $user['password'])) {
-            session_start();
-            $_SESSION['email'] = $user['email'];
+            $_SESSION['logged_in'] = true;
+            $_SESSION['email'] = $user['emailid'];
+
             header('Location: home');
-            exit;
+            exit();
         } else {
             $message = "Invalid password. Please try again.";
         }
     } else {
         $message = "No account found with that email. Please sign up.";
+    }
+
+    $stmt->close();
+}
+
+if (isset($_POST['reset_request'])) {
+    $email = $_POST['reset_email'];
+
+    $sql = "SELECT * FROM user WHERE emailid = ?";
+    $stmt = $conn->prepare($sql);
+    $stmt->bind_param("s", $email);
+    $stmt->execute();
+    $result = $stmt->get_result();
+
+    if ($result->num_rows > 0) {
+        // Generate a password reset token
+        $token = bin2hex(random_bytes(50));
+
+        // Update the user table with the token and set an expiry time (e.g., 1 hour from now)
+        $expiry = date("Y-m-d H:i:s", strtotime('+1 hour'));
+        $updateTokenSql = "UPDATE user SET password_reset_token = ?, token_expiry = ? WHERE emailid = ?";
+        $updateStmt = $conn->prepare($updateTokenSql);
+        $updateStmt->bind_param("sss", $token, $expiry, $email);
+
+        if ($updateStmt->execute()) {
+            // Create a password reset link with the token
+            $resetLink = "http://localhost/verify-ads/reset_password.php?token=" . $token;
+            $subject = "Password Reset Request";
+            $messageBody = "Hello, \n\nPlease click the link below to reset your password:\n" . $resetLink . "\n\nIf you did not request a password reset, please ignore this email.";
+            $headers = "From: noreply@tecknify.com\r\n";
+            $headers .= "Content-Type: text/plain; charset=UTF-8\r\n";
+
+            // Send the email
+            if (mail($email, $subject, $messageBody, $headers)) {
+                $message = "Password reset link has been sent to your email.";
+            } else {
+                $message = "Error sending email. Please try again.";
+            }
+        } else {
+            $message = "Error updating token: " . $updateStmt->error;
+        }
+
+        $updateStmt->close();
+    } else {
+        $message = "No account found with that email.";
     }
 
     $stmt->close();
@@ -75,7 +131,7 @@ $conn->close();
     <style>
         body {
             font-family: Arial, sans-serif;
-            background-color: #f4f4f4;
+            background-color: #f0f2f5;
             display: flex;
             justify-content: center;
             align-items: center;
@@ -85,52 +141,79 @@ $conn->close();
 
         .login-signup {
             background-color: white;
-            padding: 20px;
-            border-radius: 5px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            max-width: 400px;
+            width: 100%;
         }
 
         .form-container {
-            max-width: 400px;
-            margin: auto;
+            display: flex;
+            flex-direction: column;
+        }
+
+        h2 {
+            text-align: center;
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        .input-group {
+            margin-bottom: 15px;
         }
 
         input {
             width: 100%;
-            padding: 10px;
-            margin: 10px 0;
+            padding: 12px;
+            margin-top: 5px;
             border-radius: 4px;
             border: 1px solid #ccc;
+            font-size: 16px;
+            box-sizing: border-box;
         }
 
         button {
             width: 100%;
-            padding: 10px;
-            background-color: #28a745;
+            padding: 12px;
+            background-color: #007bff;
             color: white;
             border: none;
             border-radius: 4px;
+            font-size: 16px;
             cursor: pointer;
+            margin-top: 10px;
+            transition: background-color 0.3s;
         }
 
         button:hover {
-            background-color: #218838;
+            background-color: #0056b3;
         }
 
         p {
             text-align: center;
+            margin: 15px 0;
         }
 
-        #toggle-signup,
-        #toggle-login {
-            color: blue;
+        span {
+            color: #007bff;
             cursor: pointer;
+            text-decoration: underline;
         }
 
         .message {
-            color: red;
+            color: #e74c3c;
             text-align: center;
-            margin-bottom: 10px;
+            margin-bottom: 15px;
+            font-size: 14px;
+        }
+
+        .form-container form {
+            display: none;
+        }
+
+        .form-container form.active {
+            display: block;
         }
     </style>
 </head>
@@ -140,51 +223,60 @@ $conn->close();
         <div class="form-container">
             <h2 id="form-title">Admin Login</h2>
 
-            <!-- Message Area -->
             <?php if ($message != ''): ?>
                 <p class="message"><?php echo $message; ?></p>
             <?php endif; ?>
 
             <!-- Login Form -->
-            <form id="login-form" method="POST">
-                <div class="input-group">
-                    <label for="login_email">Email:</label>
-                    <input type="email" id="login_email" name="login_email" required>
-                </div>
-                <div class="input-group">
-                    <label for="login_password">Password:</label>
-                    <input type="password" id="login_password" name="login_password" required>
-                </div>
+            <form id="login-form" method="POST" class="active">
+                <input type="email" name="login_email" required placeholder="Email">
+                <input type="password" name="login_password" required placeholder="Password">
                 <button type="submit" name="login">Login</button>
                 <p>Don't have an account? <span id="toggle-signup">Sign Up</span></p>
+                <p><span id="toggle-forgot-password">Forgot Password?</span></p>
             </form>
 
             <!-- Signup Form -->
-            <form id="signup-form" method="POST" style="display: none;">
-                <div class="input-group">
-                    <label for="signup_email">Email:</label>
-                    <input type="email" id="signup_email" name="signup_email" required>
-                </div>
-                <div class="input-group">
-                    <label for="signup_password">Password:</label>
-                    <input type="password" id="signup_password" name="signup_password" required>
-                </div>
+            <form id="signup-form" method="POST">
+                <input type="email" name="signup_email" required placeholder="Email">
+                <input type="password" name="signup_password" required placeholder="Password">
                 <button type="submit" name="signup">Sign Up</button>
                 <p>Already have an account? <span id="toggle-login">Login</span></p>
+            </form>
+
+            <!-- Forgot Password Form -->
+            <form id="forgot-password-form" method="POST">
+                <input type="email" name="reset_email" required placeholder="Email">
+                <button type="submit" name="reset_request">Request Password Reset</button>
+                <p>Remembered your password? <span id="toggle-login-from-reset">Login</span></p>
             </form>
         </div>
     </div>
 
     <script>
-        document.getElementById('toggle-signup').addEventListener('click', function() {
-            document.getElementById('login-form').style.display = 'none';
-            document.getElementById('signup-form').style.display = 'block';
+        document.getElementById('toggle-signup').addEventListener('click', function () {
+            document.getElementById('login-form').classList.remove('active');
+            document.getElementById('signup-form').classList.add('active');
+            document.getElementById('forgot-password-form').classList.remove('active');
             document.getElementById('form-title').innerText = 'Admin Sign Up';
         });
 
-        document.getElementById('toggle-login').addEventListener('click', function() {
-            document.getElementById('signup-form').style.display = 'none';
-            document.getElementById('login-form').style.display = 'block';
+        document.getElementById('toggle-login').addEventListener('click', function () {
+            document.getElementById('signup-form').classList.remove('active');
+            document.getElementById('login-form').classList.add('active');
+            document.getElementById('forgot-password-form').classList.remove('active');
+            document.getElementById('form-title').innerText = 'Admin Login';
+        });
+
+        document.getElementById('toggle-forgot-password').addEventListener('click', function () {
+            document.getElementById('login-form').classList.remove('active');
+            document.getElementById('forgot-password-form').classList.add('active');
+            document.getElementById('form-title').innerText = 'Forgot Password';
+        });
+
+        document.getElementById('toggle-login-from-reset').addEventListener('click', function () {
+            document.getElementById('forgot-password-form').classList.remove('active');
+            document.getElementById('login-form').classList.add('active');
             document.getElementById('form-title').innerText = 'Admin Login';
         });
     </script>

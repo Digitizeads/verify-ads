@@ -48,7 +48,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 /* callbutton */
 document.getElementById("callButton").addEventListener("click", function () {
-  window.location.href = "tel:+919178898880"; // Replace with the desired phone number
+  window.location.href = "tel:+917788994131"; // Replace with the desired phone number
 });
 
 /* counter */
@@ -138,7 +138,7 @@ document.querySelector(".social-button.skype").addEventListener("click", functio
 
 // Event listener for the WhatsApp button
 document.querySelector(".social-button.whatsapp").addEventListener("click", function () {
-  window.open("https://wa.me/+919178898880", "_blank");
+  window.open("https://wa.me/+917788994131", "_blank");
 });
 
 // Event listener for the Google Review button

@@ -373,7 +373,9 @@
                 <h2 class="h2 section-title">Why choose Us!</h2>
 
                 <p class="section-text">
-                  We combine creativity and analytics for delivering tailored digital marketing solutions. Our strategies thus enhance brand building, accelerate sales, as well as connects you with your target audience, all driven by the innovative ideas from our dedicated pool of experts.
+                  We combine creativity and analytics for delivering tailored digital marketing solutions. Our
+                  strategies thus enhance brand building, accelerate sales, as well as connects you with your target
+                  audience, all driven by the innovative ideas from our dedicated pool of experts.
                 </p>
 
                 <ul class="about-list">
@@ -404,7 +406,8 @@
                       <h3 class="h3 card-title">Dedicated Project Maneger</h3>
 
                       <p class="card-text">
-                        When in collaboration with us, you get dedicated project manager that deals only with your project to give you solutions that matches your requirements.
+                        When in collaboration with us, you get dedicated project manager that deals only with your
+                        project to give you solutions that matches your requirements.
                       </p>
 
                     </div>
@@ -420,7 +423,8 @@
                       <h3 class="h3 card-title">Customised Solutions</h3>
 
                       <p class="card-text">
-                        Our diverse team thrives on open communication and shared goals on providing a customised approach for every client. 
+                        Our diverse team thrives on open communication and shared goals on providing a customised
+                        approach for every client.
                       </p>
 
                     </div>
@@ -436,7 +440,8 @@
                       <h3 class="h3 card-title">White Hat SEO Technique</h3>
 
                       <p class="card-text">
-                        We promote ethical SEO tactics that increase your website's organic exposure, assuring long-term development and success while maintaining integrity and user experience.
+                        We promote ethical SEO tactics that increase your website's organic exposure, assuring long-term
+                        development and success while maintaining integrity and user experience.
                       </p>
 
                     </div>
@@ -468,7 +473,8 @@
                       <h3 class="h3 card-title">24x7 Support</h3>
 
                       <p class="card-text">
-                        Need 24x7 free support? We are the answer to your worries as we provide free support all round the clock.
+                        Need 24x7 free support? We are the answer to your worries as we provide free support all round
+                        the clock.
                       </p>
 
                     </div>
@@ -740,7 +746,7 @@
 
         <div class="button-container">
           <button id="reviewButton" class="btn btn-primary">REVIEW US</button>
-      </div>
+        </div>
 
       </section>
 
@@ -767,8 +773,8 @@
 
       <!- - #CONTACT - ->
 
-      <section class="contact" id="contact">
-      
+        <section class="contact" id="contact">
+
           <div class="contact-box">
             <h2 class="contact-title">Connect with Us</h2>
             <p class="contact-description">
@@ -782,27 +788,27 @@
       
 
     </article>
-    <div class="achievement-container">
-      <h2>Our Achievements</h2>
-      <div class="achievement-details">
-        <div class="achievement-item">
-          <span id="counter1" class="counter-number">0+</span>
-          <h3>Projects Completed</h3>
+    <div class=" achievement-container">
+              <h2>Our Achievements</h2>
+              <div class="achievement-details">
+                <div class="achievement-item">
+                  <span id="counter1" class="counter-number">0+</span>
+                  <h3>Projects Completed</h3>
 
-        </div>
-        <div class="achievement-item">
-          <span id="counter2" class="counter-number">0+</span>
-          <h3>Clients Served</h3>
+                </div>
+                <div class="achievement-item">
+                  <span id="counter2" class="counter-number">0+</span>
+                  <h3>Clients Served</h3>
 
-        </div>
+                </div>
 
-        <div class="achievement-item">
-          <span id="counter2" class="counter-number">0+</span>
-          <h3>Clients Served</h3>
+                <div class="achievement-item">
+                  <span id="counter2" class="counter-number">0+</span>
+                  <h3>Clients Served</h3>
 
-        </div>
-      </div>
-    </div>
+                </div>
+              </div>
+          </div>
   </main>
 
 
@@ -832,9 +838,9 @@
       <div class="newsletter-text">
         <h2>Subscribe to Our Newsletter!</h2>
         <p>Stay updated with the latest news, tips, and insights.</p>
-        <form class="newsletter-form">
+        <form class="newsletter-form" id="newsletterForm">
           <div class="input-container">
-            <input type="email" class="email-input" placeholder="Your email" required>
+            <input type="email" id="email" class="email-input" placeholder="Your email" required>
             <button type="submit" class="btn btn-primary">Subscribe</button>
           </div>
         </form>
@@ -876,6 +882,51 @@
   -->
   <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
   <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+
+  <script>
+    // Form submission handler
+    document.getElementById('newsletterForm').addEventListener('submit', async function(event) {
+      event.preventDefault(); // Prevent default form submission
+  
+      // Get email input value
+      const email = document.getElementById('email').value;
+  
+      // Check if email input is not empty
+      if (!email) {
+        alert("Email is required.");
+        return;
+      }
+  
+      // API URL
+      const apiUrl = 'http://localhost/restapi/newsletter/newsletter';
+  
+      try {
+        // Sending POST request to API
+        const response = await fetch(apiUrl, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/x-www-form-urlencoded',  // Sending form-data
+          },
+          body: new URLSearchParams({
+            email: email  // URL-encoded format
+          })
+        });
+  
+        // Handling the response
+        const result = await response.json(); // Parse response as JSON
+        if (response.ok) {
+          // If successful
+          // alert(result.message);
+        } else {
+          // If there's an error
+          alert('Error subscribing. ' + result.message);
+        }
+      } catch (error) {
+        console.error('Error:', error);
+        alert('Error subscribing. Please check your network connection.');
+      }
+    });
+  </script>
 
 </body>
 

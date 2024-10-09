@@ -115,6 +115,7 @@ header("Expires: 0");
               $fromDate = $_GET['fromDate'];
               $toDate = $_GET['toDate'];
             }
+            // echo $toDate;exit;
 
             // Query to fetch data with date filter
             $sql = "SELECT * FROM newsletter";
@@ -152,7 +153,7 @@ header("Expires: 0");
       </div>
       <div class="col-md-12 text-end"> <!-- Align button to the right -->
         <?php if ($result && $result->num_rows > 0): ?>
-          <button id="actionButton" class="btn btn-success mt-3">Perform Action</button>
+          <button id="actionButton" class="btn btn-success mt-3">Download</button>
         <?php endif; ?>
       </div>
     </div>

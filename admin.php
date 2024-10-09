@@ -1,6 +1,15 @@
 <?php
 session_start();
 
+// Include PHPMailer classes
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\Exception;
+
+// Load the PHPMailer classes from the src folder
+require_once 'phpmailer/src/Exception.php';
+require_once 'phpmailer/src/PHPMailer.php';
+require_once 'phpmailer/src/SMTP.php';
+
 $servername = "localhost";
 $username = "root";
 $password = "";
@@ -76,6 +85,8 @@ if (isset($_POST['login'])) {
 if (isset($_POST['reset_request'])) {
     $email = $_POST['reset_email'];
 
+    date_default_timezone_set('Asia/Kolkata');
+
     $sql = "SELECT * FROM user WHERE emailid = ?";
     $stmt = $conn->prepare($sql);
     $stmt->bind_param("s", $email);
@@ -95,16 +106,34 @@ if (isset($_POST['reset_request'])) {
         if ($updateStmt->execute()) {
             // Create a password reset link with the token
             $resetLink = "http://localhost/verify-ads/reset_password.php?token=" . $token;
-            $subject = "Password Reset Request";
-            $messageBody = "Hello, \n\nPlease click the link below to reset your password:\n" . $resetLink . "\n\nIf you did not request a password reset, please ignore this email.";
-            $headers = "From: noreply@tecknify.com\r\n";
-            $headers .= "Content-Type: text/plain; charset=UTF-8\r\n";
 
-            // Send the email
-            if (mail($email, $subject, $messageBody, $headers)) {
-                $message = "Password reset link has been sent to your email.";
-            } else {
-                $message = "Error sending email. Please try again.";
+            // Initialize PHPMailer
+            $mail = new PHPMailer(true);
+
+            try {
+                //Server settings
+                $mail->isSMTP();                                            // Send using SMTP
+                $mail->Host       = 'smtp.gmail.com';                     // Set the SMTP server to send through
+                $mail->SMTPAuth   = true;                                   // Enable SMTP authentication
+                $mail->Username   = 'rajat.web71@gmail.com';               // SMTP username
+                $mail->Password   = 'ctwh vyny rrdh nwcu';                  // SMTP password
+                $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;         // Enable TLS encryption; `PHPMailer::ENCRYPTION_SMTPS` encouraged
+                $mail->Port       = 587;                                    // TCP port to connect to
+
+                //Recipients
+                $mail->setFrom('rajat.web71@gmail.com', 'Verify-ads');
+                $mail->addAddress($email);                                  // Add a recipient
+
+                // Content
+                $mail->isHTML(true);                                        // Set email format to HTML
+                $mail->Subject = 'Password Reset Request';
+                $mail->Body    = "Hello, <br><br>Please click the link below to reset your password:<br><a href='" . $resetLink . "'>Reset Password</a><br><br>If you did not request a password reset, please ignore this email.";
+                $mail->AltBody = "Hello, \n\nPlease click the link below to reset your password:\n" . $resetLink . "\n\nIf you did not request a password reset, please ignore this email.";
+
+                $mail->send();
+                $message = "Password reset link has been sent to your registered email.";
+            } catch (Exception $e) {
+                $message = "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
             }
         } else {
             $message = "Error updating token: " . $updateStmt->error;
@@ -254,27 +283,27 @@ $conn->close();
     </div>
 
     <script>
-        document.getElementById('toggle-signup').addEventListener('click', function () {
+        document.getElementById('toggle-signup').addEventListener('click', function() {
             document.getElementById('login-form').classList.remove('active');
             document.getElementById('signup-form').classList.add('active');
             document.getElementById('forgot-password-form').classList.remove('active');
             document.getElementById('form-title').innerText = 'Admin Sign Up';
         });
 
-        document.getElementById('toggle-login').addEventListener('click', function () {
+        document.getElementById('toggle-login').addEventListener('click', function() {
             document.getElementById('signup-form').classList.remove('active');
             document.getElementById('login-form').classList.add('active');
             document.getElementById('forgot-password-form').classList.remove('active');
             document.getElementById('form-title').innerText = 'Admin Login';
         });
 
-        document.getElementById('toggle-forgot-password').addEventListener('click', function () {
+        document.getElementById('toggle-forgot-password').addEventListener('click', function() {
             document.getElementById('login-form').classList.remove('active');
             document.getElementById('forgot-password-form').classList.add('active');
             document.getElementById('form-title').innerText = 'Forgot Password';
         });
 
-        document.getElementById('toggle-login-from-reset').addEventListener('click', function () {
+        document.getElementById('toggle-login-from-reset').addEventListener('click', function() {
             document.getElementById('forgot-password-form').classList.remove('active');
             document.getElementById('login-form').classList.add('active');
             document.getElementById('form-title').innerText = 'Admin Login';

@@ -1,103 +1,68 @@
 <?php
 session_start();
-use PHPMailer\PHPMailer\PHPMailer;
-use PHPMailer\PHPMailer\Exception;
-
-// Load PHPMailer classes
-require_once 'phpmailer/src/Exception.php';
-require_once 'phpmailer/src/PHPMailer.php';
-require_once 'phpmailer/src/SMTP.php';
-
-// contact.php - REST API
-header("Access-Control-Allow-Origin: *");
-header("Content-Type: application/json; charset=UTF-8");
-header("Access-Control-Allow-Methods: GET, POST, PUT, DELETE");
-header("Access-Control-Allow-Headers: Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With");
-
-require 'vendor/autoload.php'; // Ensure this path is correct
 
 $servername = "localhost";
-$username = "root"; // Replace with your MySQL username
-$password = ""; // Replace with your MySQL password
+$username = "root";
+$password = "";
 $dbname = "verifyads";
-$conn = new mysqli($servername, $username, $password, $dbname);
 
-// Check connection
+// Create connection
+$conn = new mysqli($servername, $username, $password, $dbname);
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
 
-$message = '';
+$message = ''; // Store any success/error messages
 
-if (isset($_POST['reset_request'])) {
-    $email = $_POST['reset_email'];
+// Check if the token is provided in the URL
+if (isset($_GET['token'])) {
+    $token = $_GET['token'];
 
-    // Check if the email exists
-    $sql = "SELECT * FROM user WHERE emailid = ?";
+    // Check if the token is valid and not expired
+    $sql = "SELECT * FROM user WHERE password_reset_token = ? AND token_expiry > NOW()";
     $stmt = $conn->prepare($sql);
-    $stmt->bind_param("s", $email);
+    $stmt->bind_param("s", $token);
     $stmt->execute();
     $result = $stmt->get_result();
 
     if ($result->num_rows > 0) {
-        $token = bin2hex(random_bytes(50)); // Generate token
-        $expiry = date("Y-m-d H:i:s", strtotime('+1 hour'));
-        $updateTokenSql = "UPDATE user SET password_reset_token = ?, token_expiry = ? WHERE emailid = ?";
-        $updateStmt = $conn->prepare($updateTokenSql);
-        $updateStmt->bind_param("sss", $token, $expiry, $email);
+        $user = $result->fetch_assoc();
 
-        if ($updateStmt->execute()) {
-            // Call the passwordReset function to send the email
-            $message = passwordReset($email, $token);
-        } else {
-            $message = "Error updating token: " . $updateStmt->error;
+        // Handle password reset form submission
+        if (isset($_POST['reset_password'])) {
+            $new_password = $_POST['new_password'];
+            $confirm_password = $_POST['confirm_password'];
+
+            if ($new_password === $confirm_password) {
+                // Hash the new password
+                $hashed_password = password_hash($new_password, PASSWORD_BCRYPT);
+
+                // Update the user's password in the database
+                $updatePasswordSql = "UPDATE user SET password = ?, password_reset_token = NULL, token_expiry = NULL WHERE emailid = ?";
+                $updateStmt = $conn->prepare($updatePasswordSql);
+                $updateStmt->bind_param("ss", $hashed_password, $user['emailid']);
+
+                if ($updateStmt->execute()) {
+                    $message = "Password reset successful! You can now log in.";
+                } else {
+                    $message = "Error updating password: " . $updateStmt->error;
+                }
+
+                $updateStmt->close();
+            } else {
+                $message = "Passwords do not match. Please try again.";
+            }
         }
-
-        $updateStmt->close();
     } else {
-        $message = "No account found with that email.";
+        $message = "Invalid or expired token.";
     }
 
     $stmt->close();
+} else {
+    $message = "No token provided. Please check your email for the reset link.";
 }
 
 $conn->close();
-
-// Function to send password reset email
-function passwordReset($email, $token)
-{
-    $mail = new PHPMailer(true);
-
-    try {
-        // SMTP configuration
-        $mail->isSMTP();
-        $mail->Host = 'smtp.gmail.com'; // Change this to your SMTP server if necessary
-        $mail->SMTPAuth = true;
-        $mail->Username = 'rajat.web71@gmail.com'; // Replace with your email
-        $mail->Password = 'ctwh vyny rrdh nwcu'; // Replace with your app password
-        $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
-        $mail->Port = 587;
-
-        // Email content
-        $mail->setFrom('rajat.web71@gmail.com', 'Tecknify'); // Replace with your email
-        $mail->addAddress($email);
-        $mail->Subject = 'Password Reset Request';
-
-        // Create a reset link
-        $resetLink = "http://localhost/verify-ads/reset_password.php?token=" . $token;
-        $mail->Body = "Please click the following link to reset your password: <a href='$resetLink'>$resetLink</a>";
-        $mail->isHTML(true); // Ensure the email is sent as HTML
-
-        // Enable debugging
-        $mail->SMTPDebug = 2; // Set to 0 for no output, 1 for errors and messages, 2 for detailed debug output
-
-        // Send the email
-        $mail->send();
-        return "Password reset link has been sent to your email.";
-    } catch (Exception $e) {
-        return "Error sending email: " . $mail->ErrorInfo;
-    }
-}
 ?>
 
 <!DOCTYPE html>
@@ -105,30 +70,87 @@ function passwordReset($email, $token)
 
 <head>
     <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Forgot Password</title>
+    <title>Reset Password | Verify Ads</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f8f9fa;
+        }
+
+        .container {
+            max-width: 400px;
+            padding: 20px;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+    </style>
 </head>
 
 <body>
-    <div class="forgot-password">
-        <div class="form-container">
-            <h2>Forgot Password</h2>
+    <div class="container">
+        <h2>Reset Your Password</h2>
 
-            <!-- Message Area -->
-            <?php if ($message != ''): ?>
-                <p class="message"><?php echo $message; ?></p>
-            <?php endif; ?>
+        <?php if (!empty($message)) : ?>
+            <div class="alert alert-info" id="message" role="alert">
+                <?php echo $message; ?>
+            </div>
+            <script>
+                // Show the alert for 5 seconds then redirect
+                setTimeout(function() {
+                    window.location.href = 'admin'; // Redirect to admin.php
+                }, 5000);
+            </script>
+        <?php endif; ?>
 
-            <!-- Forgot Password Form -->
-            <form method="POST">
-                <div class="input-group">
-                    <label for="reset_email">Email:</label>
-                    <input type="email" id="reset_email" name="reset_email" required>
+        <?php if (isset($user)) : ?>
+            <form action="" method="POST">
+                <div class="form-group">
+                    <label for="new_password">New Password:</label>
+                    <div class="input-group">
+                        <input type="password" name="new_password" id="new_password" class="form-control" required>
+                        <div class="input-group-append">
+                            <button class="btn btn-outline-secondary" type="button" onclick="togglePasswordVisibility('new_password', this)">
+                                <span id="new_password_icon" class="glyphicon glyphicon-eye-open"></span> View
+                            </button>
+                        </div>
+                    </div>
                 </div>
-                <button type="submit" name="reset_request">Send Reset Link</button>
+                <div class="form-group">
+                    <label for="confirm_password">Confirm New Password:</label>
+                    <div class="input-group">
+                        <input type="password" name="confirm_password" id="confirm_password" class="form-control" required>
+                        <div class="input-group-append">
+                            <button class="btn btn-outline-secondary" type="button" onclick="togglePasswordVisibility('confirm_password', this)">
+                                <span id="confirm_password_icon" class="glyphicon glyphicon-eye-open"></span> View
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <button type="submit" name="reset_password" class="btn btn-primary">Reset Password</button>
             </form>
-        </div>
+        <?php endif; ?>
     </div>
+
+    <script>
+        function togglePasswordVisibility(inputId, button) {
+            const input = document.getElementById(inputId);
+            const isPasswordVisible = input.type === "text";
+
+            // Toggle the type between "text" and "password"
+            input.type = isPasswordVisible ? "password" : "text";
+
+            // Change the button text based on the current state
+            button.innerHTML = isPasswordVisible ? "View" : "Hide";
+        }
+    </script>
 </body>
 
 </html>

@@ -1,4 +1,5 @@
 <?php
+include 'config.php';
 session_start();
 
 // Include PHPMailer classes
@@ -105,7 +106,8 @@ if (isset($_POST['reset_request'])) {
 
         if ($updateStmt->execute()) {
             // Create a password reset link with the token
-            $resetLink = "http://localhost/verify-ads/reset_password.php?token=" . $token;
+            // $resetLink = "http://localhost/verify-ads/reset_password.php?token=" . $token;
+            $resetLink = WEBSERVICEAPI_URL . "/reset_password.php?token=" . $token;
 
             // Initialize PHPMailer
             $mail = new PHPMailer(true);

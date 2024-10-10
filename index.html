@@ -898,8 +898,8 @@
       }
   
       // API URL
-      const apiUrl = 'http://localhost/restapi/newsletter/newsletter';
-  
+      const apiUrl = 'http://localhost/restapi/newsletter/newsletter'; //local db connection
+      // const apiUrl = 'https://verifyads.com/restapi/newsletter/newsletter'; //production db connection 
       try {
         // Sending POST request to API
         const response = await fetch(apiUrl, {
@@ -923,7 +923,7 @@
         }
       } catch (error) {
         console.error('Error:', error);
-        alert('Error subscribing. Please check your network connection.');
+        // alert('Error subscribing. Please check your network connection.');
       }
     });
   </script>

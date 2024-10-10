@@ -139,18 +139,18 @@
    <!--  <p>Any questions or remarks? Just write us a message!</p> -->
 
     <div class="contact-section">
-      <form class="contact-form" id="contactForm">
+      <form class="contact-form" id="serviceRequestForm">
         <div class="form-row">
           <div class="form-group">
             <div class="input-icon">
               <i class="fas fa-user"></i>
-              <input type="text" id="first-name" class="form-control" placeholder="First Name" required>
+              <input type="text" id="fname" name="fname" class="form-control" placeholder="First Name" required>
             </div>
           </div>
           <div class="form-group">
             <div class="input-icon">
               <i class="fas fa-user"></i>
-              <input type="text" id="last-name" class="form-control" placeholder="Last Name" required>
+              <input type="text" id="lname" name="lname" class="form-control" placeholder="Last Name" required>
             </div>
           </div>
         </div>
@@ -159,13 +159,13 @@
           <div class="form-group">
             <div class="input-icon">
               <i class="fas fa-envelope"></i>
-              <input type="email" id="email" class="form-control" placeholder="Email Address" required>
+              <input type="email" id="email" name="email" class="form-control" placeholder="Email Address" required>
             </div>
           </div>
           <div class="form-group">
             <div class="input-icon">
               <i class="fas fa-phone"></i>
-              <input type="text" id="phone" class="form-control" placeholder="Phone" required>
+              <input type="tel" id="mobile" name="mobile" class="form-control" placeholder="Phone" required>
             </div>
           </div>
         </div>
@@ -173,31 +173,31 @@
         <div class="checkbox">
           <p class="check-ques">I am Looking For *</p>
           <div class="checkbox-group">
-            <label><input type="checkbox" name="service" value="new-website"> New Website</label>
-            <label><input type="checkbox" name="service" value="website-redesign"> Website Redesign</label>
-            <label><input type="checkbox" name="service" value="digital-marketing"> Digital Marketing</label>
-            <label><input type="checkbox" name="service" value="seo"> SEO</label>
-            <label><input type="checkbox" name="service" value="paid-ads"> Paid Ads</label>
-            <label><input type="checkbox" name="service" value="logo-design"> Logo Design</label>
-            <label><input type="checkbox" name="service" value="social-media-marketing"> Social Media Marketing</label>
-            <label><input type="checkbox" name="service" value="website-audit"> Website Audit</label>
-            <label><input type="checkbox" id="other-checkbox" name="service" value="other"> Other</label>
+            <label><input type="checkbox" id="newWebsite" name="service" value="New Website"> New Website</label>
+            <label><input type="checkbox" id="websiteRedesign" name="service" value="Website Redesign"> Website Redesign</label>
+            <label><input type="checkbox" id="digitalMarketing" name="service" value="Digital Marketing"> Digital Marketing</label>
+            <label><input type="checkbox" id="seo" name="service" value="SEO"> SEO</label>
+            <label><input type="checkbox" id="paidAds" name="service" value="Paid Ads"> Paid Ads</label>
+            <label><input type="checkbox" id="logoDesign" name="service" value="Logo Design"> Logo Design</label>
+            <label><input type="checkbox" id="socialMedia" name="service" value="Social Media Marketing"> Social Media Marketing</label>
+            <label><input type="checkbox" id="websiteAudit" name="service" value="Website Audit"> Website Audit</label>
+            <label><input type="checkbox" id="otherService" name="service" value="Other" onclick="toggleTextarea()"> Other</label>
           </div>
         </div>
 
         <!-- Hidden text area -->
         <div id="other-textarea" style="display: none;">
-          <label for="other-service">Please specify:</label>
-          <textarea id="other-service" name="other-service"></textarea>
+          <label for="otherServiceText">Please specify:</label>
+          <textarea id="otherServiceText" name="otherService" rows="3" placeholder="Please specify other service"></textarea>
         </div>
 
         <div class="radio">
           <p class="radio-ques">Would You Like To Schedule? *</p>
           <div class="radio-group">
-            <label><input type="radio" name="schedule" value="phone" required> Yes, By Phone!</label>
-            <label><input type="radio" name="schedule" value="zoom"> Yes, By Zoom!</label>
-            <label><input type="radio" name="schedule" value="skype"> Yes, By Skype!</label>
-            <label><input type="radio" name="schedule" value="google-meet"> Yes, By Google Meet</label>
+            <label><input type="radio" name="schedule" value="By Phone" required> Yes, By Phone!</label>
+            <label><input type="radio" name="schedule" value="By Zoom"> Yes, By Zoom!</label>
+            <label><input type="radio" name="schedule" value="By Skype"> Yes, By Skype!</label>
+            <label><input type="radio" name="schedule" value="By Google Meet"> Yes, By Google Meet</label>
           </div>
         </div>
 
@@ -207,7 +207,8 @@
         </div>
       </form>
     </div>
-  </section>
+</section>
+
 
 
 
@@ -279,6 +280,67 @@
             .catch(error => console.error('Error loading footer:', error));
     });
 </script>
+  <script>
+    // Initially hide the Other service textarea
+    document.getElementById('otherServiceText').style.display = 'none';
+
+    // Toggle textarea visibility when "Other" checkbox is clicked
+    function toggleTextarea() {
+      const otherServiceCheckbox = document.getElementById('otherService');
+      const otherServiceText = document.getElementById('otherServiceText');
+      if (otherServiceCheckbox.checked) {
+        otherServiceText.style.display = 'block';
+      } else {
+        otherServiceText.style.display = 'none';
+      }
+    }
+  </script>
+
+  <!-- API script to store data -->
+  <script>
+    document.querySelector('#serviceRequestForm').addEventListener('submit', function (event) {
+  event.preventDefault(); // Prevent the default form submission
+
+  // Gather form data
+  const formData = new FormData(this);
+  
+  // Handle checkboxes for services
+  const services = [];
+  document.querySelectorAll('.checkbox-group input[type="checkbox"]:checked').forEach((checkbox) => {
+    services.push(checkbox.value); // Use the value attribute of the checkbox
+  });
+
+  // Handle the other service textarea
+  const otherServiceCheckbox = document.getElementById("otherService");
+  const otherServiceText = document.getElementById("otherServiceText").value;
+  
+  // Add the other service value if checked and not empty
+  if (otherServiceCheckbox.checked && otherServiceText) {
+    services.push(otherServiceText);
+  }
+
+  // Append services to FormData
+  formData.append('services', services.join(', '));
+
+  // Send data to the API
+  fetch('http://localhost/restapi/contact/contact', { // Change to production URL
+    method: 'POST',
+    body: formData,
+  })
+  .then(response => response.json())
+  .then(data => {
+    alert(data.message); // Show the response message
+    if (data.message === "Item created and email sent") {
+      this.reset(); // Reset the form if successful
+    }
+  })
+  .catch(error => {
+    console.error('Error:', error);
+    alert('There was a problem with the submission. Please try again.');
+  });
+});
+
+  </script>
 </body>
 
 </html>

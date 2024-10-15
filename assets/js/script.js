@@ -138,8 +138,13 @@ document.querySelector(".social-button.skype").addEventListener("click", functio
 
 // Event listener for the WhatsApp button
 document.querySelector(".social-button.whatsapp").addEventListener("click", function () {
-  window.open("https://wa.me/+917788994131", "_blank");
+  const phoneNumber = "917788994131"; // Company phone number (without '+')
+  const defaultMessage = "Hello! Can we get in touch?"; // Pre-filled message from company side
+  const whatsappURL = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(defaultMessage)}`;
+  
+  window.open(whatsappURL, "_blank");
 });
+
 
 // Event listener for the Google Review button
 document.getElementById("reviewButton").addEventListener("click", function () {

@@ -629,13 +629,12 @@ header .container {
   /*  background: url("../images/about-bg.png") no-repeat; */
   background-position: center;
   /* background-size: cover; */
-  padding-top: 12rem;
   text-align: center;
 }
 
 .about-top {
   margin-bottom: 120px;
-  margin-top: 10rem;
+  
 }
 
 .about .h2 {

@@ -1,7 +1,7 @@
 :root {
   /**
-     * colors
-     */
+   * colors
+   */
 
   --maximum-yellow-red: hsl(53, 100%, 50%);
   --royal-blue-dark: hsl(231, 61%, 22%);
@@ -19,8 +19,8 @@
 
   /* New color scheme */
   /* --slate-grey: hsl(180, 25%, 25%);
-     --neon-green: hsl(110, 100%, 60%);
-     --cyan: hsl(180, 100%, 50%); */
+   --neon-green: hsl(110, 100%, 60%);
+   --cyan: hsl(180, 100%, 50%); */
 
   --card-clr: var(--oxford-blue); /* Updated */
   --body-clr: var(--maximum-yellow-red); /* Updated */
@@ -29,8 +29,8 @@
   --text-clr: #767a86;
 
   /**
-     * typography
-     */
+   * typography
+   */
 
   --ff-poppins: "Poppins", sans-sarif;
 
@@ -46,15 +46,15 @@
   --fw-500: 500;
 
   /**
-     * transition
-     */
+   * transition
+   */
 
   --transition: 0.25s ease-in-out;
 }
 
 /*-----------------------------------*\ 
-   * #RESET
-  \*-----------------------------------*/
+ * #RESET
+\*-----------------------------------*/
 
 *,
 *::before,
@@ -129,8 +129,8 @@ body {
 }
 
 /*-----------------------------------*\ 
-   * #REUSED STYLE
-  \*-----------------------------------*/
+ * #REUSED STYLE
+\*-----------------------------------*/
 
 .container {
   padding: 0 15px;
@@ -272,8 +272,9 @@ body {
 }
 
 /*-----------------------------------*\ 
-   * #HEADER
-  \*-----------------------------------*/
+ * #HEADER
+\*-----------------------------------*/
+
 .top-bar-container {
   margin-bottom: 10px;
   animation: fade-in 1.5s ease-in-out;
@@ -547,8 +548,8 @@ header .container {
 }
 
 /*-----------------------------------*\ 
-     * #HERO
-    \*-----------------------------------*/
+   * #HERO
+  \*-----------------------------------*/
 
 .hero {
   position: relative;
@@ -628,13 +629,12 @@ header .container {
   /*  background: url("../images/about-bg.png") no-repeat; */
   background-position: center;
   /* background-size: cover; */
-  padding-top: 12rem;
   text-align: center;
 }
 
 .about-top {
   margin-bottom: 120px;
-  margin-top: 10rem;
+  
 }
 
 .about .h2 {
@@ -724,8 +724,8 @@ header .container {
 }
 
 /*-----------------------------------*\ 
-     * #FEATURES
-    \*-----------------------------------*/
+   * #FEATURES
+  \*-----------------------------------*/
 
 .features {
   /* padding: 50px 0; */
@@ -815,8 +815,8 @@ header .container {
 }
 
 /*-----------------------------------*\ 
-     * #CONTACT
-    \*-----------------------------------*/
+   * #CONTACT
+  \*-----------------------------------*/
 
 .contact {
   margin-bottom: 120px;
@@ -972,8 +972,8 @@ textarea {
 }
 
 /*-----------------------------------*\ 
-     * #FOOTER
-    \*-----------------------------------*/
+   * #FOOTER
+  \*-----------------------------------*/
 
 footer {
   background: var(--black);
@@ -1086,8 +1086,8 @@ footer {
 }
 
 /*-----------------------------------*\ 
-     * #GO TO TOP
-    \*-----------------------------------*/
+   * #GO TO TOP
+  \*-----------------------------------*/
 
 /* Go to Top Button */
 .go-top {
@@ -1505,29 +1505,29 @@ footer {
 }
 
 /*-----------------------------------*\ 
-     * #RESPONSIVE
-    \*-----------------------------------*/
+   * #RESPONSIVE
+  \*-----------------------------------*/
 
 /**
-     * responsive for larger than 450px 
-     */
+   * responsive for larger than 450px 
+   */
 
 @media (min-width: 450px) {
   /**
-       * CUSTOM PROPERTY 
-       */
+     * CUSTOM PROPERTY 
+     */
 
   :root {
     /**
-         * typography
-         */
+       * typography
+       */
 
-    --fs-1: 50px;
+    --fs-1: 60px;
   }
 
   /**
-       * REUESED STYLE 
-       */
+     * REUESED STYLE 
+     */
 
   .h1,
   .h2 {
@@ -1539,8 +1539,8 @@ footer {
   }
 
   /**
-       * HEADER 
-       */
+     * HEADER 
+     */
 
   .navbar {
     left: auto;
@@ -1548,8 +1548,8 @@ footer {
   }
 
   /**
-       * HERO 
-       */
+     * HERO 
+     */
 
   .hero {
     padding: 140px 0 160px;
@@ -1561,8 +1561,8 @@ footer {
   }
 
   /**
-       * ABOUT 
-       */
+     * ABOUT 
+     */
 
   .about-card .card-title {
     padding-inline: 40px;
@@ -1579,16 +1579,16 @@ footer {
   }
 
   /**
-       * FEATURES
-       */
+     * FEATURES
+     */
 
   .features .h2 {
     --fs-2: 32px;
   }
 
   /**
-       * CTA
-       */
+     * CTA
+     */
 
   .cta-title {
     --fs-1: 42px;
@@ -1610,8 +1610,8 @@ footer {
   }
 
   /**
-       * CONTACT
-       */
+     * CONTACT
+     */
 
   .contact-title {
     --fs-2: 32px;
@@ -1624,13 +1624,13 @@ footer {
 }
 
 /**
-     * responsive for larger than 560px 
-     */
+   * responsive for larger than 560px 
+   */
 
 @media (min-width: 560px) {
   /**
-       * REUESED STYLE 
-       */
+     * REUESED STYLE 
+     */
 
   .container {
     max-width: 550px;
@@ -1638,8 +1638,8 @@ footer {
   }
 
   /**
-       * HEADER
-       */
+     * HEADER
+     */
 
   .navbar-wrapper {
     position: relative;
@@ -1651,8 +1651,8 @@ footer {
   }
 
   /**
-       * HERO, ABOUT
-       */
+     * HERO, ABOUT
+     */
 
   .hero-content,
   .about-bottom-content {
@@ -1670,8 +1670,8 @@ footer {
   }
 
   /**
-       * FOOTER
-       */
+     * FOOTER
+     */
 
   .footer-brand {
     margin-bottom: 40px;
@@ -1690,34 +1690,34 @@ footer {
 }
 
 /**
-     * responsive for larger than 768px 
-     */
+   * responsive for larger than 768px 
+   */
 
 @media (min-width: 768px) {
   /**
-       * CUSTOM PROPERTY 
-       */
+     * CUSTOM PROPERTY 
+     */
 
   :root {
     /**
-         * typography
-         */
+       * typography
+       */
 
     --fs-2: 35px;
     --fs-4: 20px;
   }
 
   /**
-       * REUSED STYLE
-       */
+     * REUSED STYLE
+     */
 
   .container {
     max-width: 740px;
   }
 
   /**
-       * ABOUT
-       */
+     * ABOUT
+     */
 
   .about-list {
     grid-template-columns: 1fr 1fr;
@@ -1736,8 +1736,8 @@ footer {
   }
 
   /**
-       * CONTACT
-       */
+     * CONTACT
+     */
 
   .contact-title {
     --fs-2: 42px;
@@ -1745,21 +1745,21 @@ footer {
 }
 
 /**
-     * responsive for larger than 1024px 
-     */
+   * responsive for larger than 1024px 
+   */
 
 @media (min-width: 1024px) {
   /**
-       * REUSED STYLE
-       */
+     * REUSED STYLE
+     */
 
   .container {
     max-width: 950px;
   }
 
   /**
-       * HEADER
-       */
+     * HEADER
+     */
 
   .navbar-menu-btn {
     display: none;
@@ -1793,8 +1793,8 @@ footer {
   }
 
   /**
-       * HERO
-       */
+     * HERO
+     */
 
   .hero-content {
     max-width: 550px;
@@ -1813,8 +1813,8 @@ footer {
   }
 
   /**
-       * ABOUT
-       */
+     * ABOUT
+     */
 
   .about-top .section-text {
     max-width: 650px;
@@ -1842,8 +1842,8 @@ footer {
   }
 
   /**
-       * FEATURES
-       */
+     * FEATURES
+     */
 
   .features :is(.section-title, .section-text) {
     max-width: 650px;
@@ -1871,20 +1871,20 @@ footer {
   }
 
   /**
-       * TESTIMONIAL
-       */
-
-  /* .sk-ww-google-reviews {
-      max-width: 600px; 
-      margin: 0 auto;
-      background-color: grey;
-      border-color: #d3040e;
-    }
+     * TESTIMONIAL
      */
 
+  /* .sk-ww-google-reviews {
+    max-width: 600px; 
+    margin: 0 auto;
+    background-color: grey;
+    border-color: #d3040e;
+  }
+   */
+
   /**
-       * CONTACT
-       */
+     * CONTACT
+     */
 
   .contact .container {
     display: flex;
@@ -1907,8 +1907,8 @@ footer {
   }
 
   /**
-       * FOOTER
-       */
+     * FOOTER
+     */
 
   .footer-top .container {
     display: flex;
@@ -1929,49 +1929,49 @@ footer {
 }
 
 /**
-     * responsive for larger than 1200px 
-     */
+   * responsive for larger than 1200px 
+   */
 
 @media (min-width: 1200px) {
   /**
-       * CUSTOM PROPERTY 
-       */
+     * CUSTOM PROPERTY 
+     */
 
   :root {
     /**
-         * typography
-         */
+       * typography
+       */
 
     --fs-2: 42px;
   }
 
   /**
-       * REUSED STYLE
-       */
+     * REUSED STYLE
+     */
 
   .container {
     max-width: 1150px;
   }
 
   /**
-       * HERO
-       */
+     * HERO
+     */
 
   .hero-banner {
     right: 100px;
   }
 
   /**
-       * ABOUT
-       */
+     * ABOUT
+     */
 
   .about-bottom-banner {
     height: 400px;
   }
 
   /**
-       * FEATURES
-       */
+     * FEATURES
+     */
 
   .features .h2 {
     --fs-2: 42px;

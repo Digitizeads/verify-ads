@@ -30,14 +30,14 @@ header("Expires: 0");
   <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <div class="container-fluid">
       <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav">
+        <!-- <ul class="navbar-nav">
           <li class="nav-item">
             <a class="nav-link active" aria-current="page" href="home">Home</a>
           </li>
-        </ul>
+        </ul> -->
 
         <!-- Admin Page Title in Center -->
-        <span class="navbar-text mx-auto">
+        <span class="navbar-text">
           <h5>Admin Page</h5>
         </span>
 

@@ -938,7 +938,7 @@ header .container {
   text-align: center;
   box-shadow: 2px 8px 20px rgba(0, 0, 0, 0.1);
   border-radius: 12px;
-  background-image: url('../image/blog.jpg'); /* Add your background image here */
+  background-image: url('../image/connect-with-us.jpg'); /* Add your background image here */
   background-size: cover; /* Ensures the image covers the box */
   background-position: center; /* Centers the image in the box */
   background-repeat: no-repeat; /* Avoids repeating the image */

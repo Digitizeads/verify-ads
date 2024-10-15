@@ -133,9 +133,8 @@ document.querySelector(".social-button.linkedin").addEventListener("click", func
 
 // Event listener for the Skype button
 document.querySelector(".social-button.skype").addEventListener("click", function () {
-  window.open("skype:live:.cid.ec8506b8a4ab3f?chat", "_blank");
+  window.open("https://web.skype.com/?openPstnPage=true/en/skype/live:.cid.ec8506b8a4ab3f", "_blank");
 });
-
 
 // Event listener for the WhatsApp button
 document.querySelector(".social-button.whatsapp").addEventListener("click", function () {

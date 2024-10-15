@@ -531,37 +531,38 @@ header .container {
     opacity: 0; /* Initially hidden */
     transform: translateY(20px); /* Start slightly below */
     animation: fade-in 1.5s ease-in-out forwards 0.5s; /* Apply fade-in effect */
-}
-
-.hero-content {
+  }
+  
+  .hero-content {
     text-align: center;
     position: relative;
     z-index: 1;
     opacity: 0; /* Initially hidden */
     transform: translateY(20px); /* Start slightly below */
     animation: fade-in 1.7s ease-in-out forwards 0.7s; /* Delayed fade-in effect */
-}
-
-.hero-title, .hero-text {
+  }
+  
+  .hero-title,
+  .hero-text {
     margin-bottom: 40px;
     opacity: 0; /* Initially hidden */
     transform: translateY(20px); /* Start slightly below */
     animation: fade-in 2s ease-in-out forwards 0.9s; /* Delayed fade-in effect */
-}
-
-.hero-text {
+  }
+  
+  .hero-text {
     font-size: var(--fs-4);
     color: var(--oxford-blue);
-}
-
-.hero .btn-primary {
+  }
+  
+  .hero .btn-primary {
     margin-inline: auto;
     opacity: 0;
     transform: translateY(20px); /* Start slightly below */
     animation: fade-in 2.3s ease-in-out forwards 1.1s; /* Delayed for the button */
-}
-
-.hero img {
+  }
+  
+  .hero img {
     position: absolute;
     top: 5%;
     right: 0;
@@ -571,9 +572,9 @@ header .container {
     z-index: 0;
     opacity: 0; /* Initially hidden */
     animation: fade-in 2.5s ease-in-out forwards 1.3s; /* Delayed for the image */
-}
-
-.shape-content {
+  }
+  
+  .shape-content {
     position: absolute;
     width: 900px;
     top: -230px;
@@ -581,40 +582,41 @@ header .container {
     z-index: -1;
     opacity: 0; /* Initially hidden */
     animation: fade-in 2.7s ease-in-out forwards 1.5s; /* Delayed fade-in effect */
-}
-
-/* Keyframes for fade-in animation */
-@keyframes fade-in {
+  }
+  
+  /* Keyframes for fade-in animation */
+  @keyframes fade-in {
     0% {
-        opacity: 0;
-        transform: translateY(20px); /* Start slightly below */
+      opacity: 0;
+      transform: translateY(20px); /* Start slightly below */
     }
     100% {
-        opacity: 1;
-        transform: translateY(0); /* End in place */
+      opacity: 1;
+      transform: translateY(0); /* End in place */
     }
-}
-  
-  
-  
- 
-  
+  }
   
   .about {
     position: relative;
     z-index: 1;
-   /*  background: url("../images/about-bg.png") no-repeat; */
+    /*  background: url("../images/about-bg.png") no-repeat; */
     background-position: center;
     /* background-size: cover; */
-    padding-top: 12rem;
     text-align: center;
   }
   
-  .about-top { margin-bottom: 120px; margin-top: 10rem; }
+  .about-top {
+    margin-bottom: 120px;
+    
+  }
   
-  .about .h2 { color: var(--oxford-blue); }
+  .about .h2 {
+    color: var(--oxford-blue);
+  }
   
-  .about-top .section-title { margin-bottom: 20px; }
+  .about-top .section-title {
+    margin-bottom: 20px;
+  }
   
   .about-top .section-text {
     color: var(--oxford-blue);
@@ -644,18 +646,26 @@ header .container {
     margin-bottom: 15px;
   }
   
-  .about-card .card-title { margin-bottom: 15px; }
+  .about-card .card-title {
+    margin-bottom: 15px;
+  }
   
-  .about-card .card-text { color: var(--davys-gray); }
+  .about-card .card-text {
+    color: var(--davys-gray);
+  }
   
-  .about-bottom-banner { margin-bottom: 120px; }
+  .about-bottom-banner {
+    margin-bottom: 120px;
+  }
   
   .about-bottom-banner img {
     width: 100%;
     height: 100%;
   }
   
-  .about-bottom .section-title { margin-bottom: 20px; }
+  .about-bottom .section-title {
+    margin-bottom: 20px;
+  }
   
   .about-bottom .section-text {
     color: var(--white);
@@ -685,6 +695,7 @@ header .container {
     background-color: #ff4400;
     transform: scale(1.1);
   }
+  
   
   
   

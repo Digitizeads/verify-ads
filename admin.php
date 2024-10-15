@@ -107,10 +107,7 @@ if (isset($_POST['reset_request'])) {
         if ($updateStmt->execute()) {
             // Create a password reset link with the token
             $resetLink = "http://localhost/verify-ads/reset_password.php?token=" . $token;
-<<<<<<< HEAD
            /*  $resetLink = WEBSERVICEAPI_URL . "/reset_password.php?token=" . $token; */
-=======
->>>>>>> a27261825cc8788f008a76fbd2f433f45ca266ae
 
             // Initialize PHPMailer
             $mail = new PHPMailer(true);

@@ -107,7 +107,7 @@ if (isset($_POST['reset_request'])) {
         if ($updateStmt->execute()) {
             // Create a password reset link with the token
             $resetLink = "http://localhost/verify-ads/reset_password.php?token=" . $token;
-           /*  $resetLink = WEBSERVICEAPI_URL . "/reset_password.php?token=" . $token; */
+            /*  $resetLink = WEBSERVICEAPI_URL . "/reset_password.php?token=" . $token; */
 
             // Initialize PHPMailer
             $mail = new PHPMailer(true);
@@ -159,157 +159,106 @@ $conn->close();
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin Login/Signup</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f0f2f5;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            margin: 0;
-        }
-
-        .login-signup {
-            background-color: white;
-            padding: 30px;
-            border-radius: 8px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-            max-width: 400px;
-            width: 100%;
-        }
-
-        .form-container {
-            display: flex;
-            flex-direction: column;
-        }
-
-        h2 {
-            text-align: center;
-            margin-bottom: 20px;
-            color: #333;
-        }
-
-        .input-group {
-            margin-bottom: 15px;
-        }
-
-        input {
-            width: 100%;
-            padding: 12px;
-            margin-top: 5px;
-            border-radius: 4px;
-            border: 1px solid #ccc;
-            font-size: 16px;
-            box-sizing: border-box;
-        }
-
-        button {
-            width: 100%;
-            padding: 12px;
-            background-color: #007bff;
-            color: white;
-            border: none;
-            border-radius: 4px;
-            font-size: 16px;
-            cursor: pointer;
-            margin-top: 10px;
-            transition: background-color 0.3s;
-        }
-
-        button:hover {
-            background-color: #0056b3;
-        }
-
-        p {
-            text-align: center;
-            margin: 15px 0;
-        }
-
-        span {
-            color: #007bff;
-            cursor: pointer;
-            text-decoration: underline;
-        }
-
-        .message {
-            color: #e74c3c;
-            text-align: center;
-            margin-bottom: 15px;
-            font-size: 14px;
-        }
-
-        .form-container form {
-            display: none;
-        }
-
-        .form-container form.active {
-            display: block;
-        }
-    </style>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
 
-<body>
-    <div class="login-signup">
+<body class="bg-light d-flex justify-content-center align-items-center vh-100">
+    <div class="login-signup card shadow-sm p-4" style="max-width: 400px; width: 100%;">
         <div class="form-container">
-            <h2 id="form-title">Admin Login</h2>
+            <h2 id="form-title" class="text-center">Admin Login</h2>
 
             <?php if ($message != ''): ?>
-                <p class="message"><?php echo $message; ?></p>
+                <p class="text-danger text-center"><?php echo $message; ?></p>
             <?php endif; ?>
 
             <!-- Login Form -->
             <form id="login-form" method="POST" class="active">
-                <input type="email" name="login_email" required placeholder="Email">
-                <input type="password" name="login_password" required placeholder="Password">
-                <button type="submit" name="login">Login</button>
-                <p>Don't have an account? <span id="toggle-signup">Sign Up</span></p>
-                <p><span id="toggle-forgot-password">Forgot Password?</span></p>
+                <div class="mb-3">
+                    <input type="email" class="form-control" name="login_email" required placeholder="Email">
+                </div>
+                <div class="mb-3 position-relative">
+                    <input type="password" class="form-control" id="login_password" name="login_password" required placeholder="Password">
+                    <span class="toggle-password position-absolute end-0 top-50 translate-middle-y me-3 text-primary" onclick="togglePassword('login_password')" style="cursor: pointer;">Show</span>
+                </div>
+                <button type="submit" class="btn btn-primary w-100 mb-3" name="login">Login</button>
+                <p class="text-center">Don't have an account? <span id="toggle-signup" class="text-primary" style="cursor: pointer;">Sign Up</span></p>
+                <p class="text-center"><span id="toggle-forgot-password" class="text-primary" style="cursor: pointer;">Forgot Password?</span></p>
             </form>
 
             <!-- Signup Form -->
-            <form id="signup-form" method="POST">
-                <input type="email" name="signup_email" required placeholder="Email">
-                <input type="password" name="signup_password" required placeholder="Password">
-                <button type="submit" name="signup">Sign Up</button>
-                <p>Already have an account? <span id="toggle-login">Login</span></p>
+            <form id="signup-form" method="POST" style="display: none;">
+                <div class="mb-3">
+                    <input type="email" class="form-control" name="signup_email" required placeholder="Email">
+                </div>
+                <div class="mb-3 position-relative">
+                    <input type="password" class="form-control" id="signup_password" name="signup_password" required placeholder="Password">
+                    <span class="toggle-password position-absolute end-0 top-50 translate-middle-y me-3 text-primary" onclick="togglePassword('signup_password')" style="cursor: pointer;">Show</span>
+                </div>
+                <button type="submit" class="btn btn-primary w-100 mb-3" name="signup">Sign Up</button>
+                <p class="text-center">Already have an account? <span id="toggle-login" class="text-primary" style="cursor: pointer;">Login</span></p>
             </form>
 
             <!-- Forgot Password Form -->
-            <form id="forgot-password-form" method="POST">
-                <input type="email" name="reset_email" required placeholder="Email">
-                <button type="submit" name="reset_request">Request Password Reset</button>
-                <p>Remembered your password? <span id="toggle-login-from-reset">Login</span></p>
+            <form id="forgot-password-form" method="POST" style="display: none;">
+                <div class="mb-3">
+                    <input type="email" class="form-control" name="reset_email" required placeholder="Email">
+                </div>
+                <button type="submit" class="btn btn-primary w-100 mb-3" name="reset_request">Request Password Reset</button>
+                <p class="text-center">Remembered your password? <span id="toggle-login-from-reset" class="text-primary" style="cursor: pointer;">Login</span></p>
             </form>
+
+            <!-- Added hyperlink below the forms -->
+            <div class="text-center mt-3">
+                <a href="http://localhost/verify-ads" class="text-decoration-none">Go to Verify Ads Platform</a>
+                <!-- <a href="https://verify-ads.com" class="text-decoration-none">Go to Verify Ads Platform</a> -->
+            </div>
         </div>
     </div>
 
+    <!-- Bootstrap JS and Popper.js -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
+
     <script>
         document.getElementById('toggle-signup').addEventListener('click', function() {
-            document.getElementById('login-form').classList.remove('active');
-            document.getElementById('signup-form').classList.add('active');
-            document.getElementById('forgot-password-form').classList.remove('active');
+            document.getElementById('login-form').style.display = 'none';
+            document.getElementById('signup-form').style.display = 'block';
+            document.getElementById('forgot-password-form').style.display = 'none';
             document.getElementById('form-title').innerText = 'Admin Sign Up';
         });
 
         document.getElementById('toggle-login').addEventListener('click', function() {
-            document.getElementById('signup-form').classList.remove('active');
-            document.getElementById('login-form').classList.add('active');
-            document.getElementById('forgot-password-form').classList.remove('active');
+            document.getElementById('signup-form').style.display = 'none';
+            document.getElementById('login-form').style.display = 'block';
+            document.getElementById('forgot-password-form').style.display = 'none';
             document.getElementById('form-title').innerText = 'Admin Login';
         });
 
         document.getElementById('toggle-forgot-password').addEventListener('click', function() {
-            document.getElementById('login-form').classList.remove('active');
-            document.getElementById('forgot-password-form').classList.add('active');
+            document.getElementById('login-form').style.display = 'none';
+            document.getElementById('forgot-password-form').style.display = 'block';
+            document.getElementById('signup-form').style.display = 'none';
             document.getElementById('form-title').innerText = 'Forgot Password';
         });
 
         document.getElementById('toggle-login-from-reset').addEventListener('click', function() {
-            document.getElementById('forgot-password-form').classList.remove('active');
-            document.getElementById('login-form').classList.add('active');
+            document.getElementById('forgot-password-form').style.display = 'none';
+            document.getElementById('login-form').style.display = 'block';
             document.getElementById('form-title').innerText = 'Admin Login';
         });
+
+        function togglePassword(fieldId) {
+            const passwordField = document.getElementById(fieldId);
+            const toggleButton = passwordField.nextElementSibling;
+
+            if (passwordField.type === "password") {
+                passwordField.type = "text";
+                toggleButton.textContent = "Hide";
+            } else {
+                passwordField.type = "password";
+                toggleButton.textContent = "Show";
+            }
+        }
     </script>
 </body>
 

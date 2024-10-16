@@ -158,7 +158,8 @@ $conn->close();
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin Login/Signup</title>
+    <title>Admin Login/Signup | Verify-ads</title>
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
@@ -180,6 +181,9 @@ $conn->close();
                 <div class="mb-3 position-relative">
                     <input type="password" class="form-control" id="login_password" name="login_password" required placeholder="Password">
                     <span class="toggle-password position-absolute end-0 top-50 translate-middle-y me-3 text-primary" onclick="togglePassword('login_password')" style="cursor: pointer;">Show</span>
+                </div>
+                <div class="form-group d-flex justify-content-center pt-1 pb-3">
+                    <div class="g-recaptcha" data-sitekey="6LccymIqAAAAALbE3ZiSf2O6qa3prV_BvaUJ5fkR"></div>
                 </div>
                 <button type="submit" class="btn btn-primary w-100 mb-3" name="login">Login</button>
                 <p class="text-center">Don't have an account? <span id="toggle-signup" class="text-primary" style="cursor: pointer;">Sign Up</span></p>

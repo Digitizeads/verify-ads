@@ -1040,6 +1040,86 @@ textarea {
   font-weight: bold;
 }
 
+/* Medium Screens (Tablets) */
+@media screen and (max-width: 1024px) {
+  .achievement-container {
+    padding: 30px;
+  }
+
+  .achievement-container h2 {
+    font-size: 2em;
+  }
+
+  .achievement-details {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .achievement-item {
+    width: 80%;
+    margin-bottom: 20px;
+  }
+
+  .achievement-item h3 {
+    font-size: 1.1em;
+  }
+
+  .counter-number {
+    font-size: 2em;
+  }
+}
+
+/* Small Screens (Phones) */
+@media screen and (max-width: 768px) {
+  .achievement-container {
+    padding: 20px;
+  }
+
+  .achievement-container h2 {
+    font-size: 1.8em;
+  }
+
+  .achievement-details {
+    flex-direction: column;
+  }
+
+  .achievement-item {
+    width: 90%;
+    margin-bottom: 20px;
+  }
+
+  .achievement-item h3 {
+    font-size: 1em;
+  }
+
+  .counter-number {
+    font-size: 1.8em;
+  }
+}
+
+/* Extra Small Screens (Very small phones) */
+@media screen and (max-width: 480px) {
+  .achievement-container {
+    padding: 15px;
+  }
+
+  .achievement-container h2 {
+    font-size: 1.5em;
+  }
+
+  .achievement-item {
+    width: 100%;
+  }
+
+  .achievement-item h3 {
+    font-size: 0.9em;
+  }
+
+  .counter-number {
+    font-size: 1.5em;
+  }
+}
+
 /*-----------------------------------*\ 
    * #FOOTER
   \*-----------------------------------*/
@@ -1261,14 +1341,14 @@ footer {
 .social-button:hover span {
   opacity: 1;
 }
-
+/* Hide social buttons on mobile screens (max-width: 768px) */
+@media screen and (max-width: 768px) {
+  .social-button {
+    display: none;
+  }
+}
 /* FAQ */
 
-:root {
-  --silver-chalice: hsl(0, 0%, 70%);
-  --oxford-blue: hsl(231, 100%, 8%);
-  --bittersweet: hsl(30, 95%, 49%);
-}
 
 .main-wrapper {
   overflow-x: hidden;

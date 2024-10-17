@@ -137,12 +137,17 @@ document.querySelector(".social-button.skype").addEventListener("click", functio
 });
 
 // Event listener for the WhatsApp button
-document.querySelector(".social-button.whatsapp").addEventListener("click", function () {
-  const phoneNumber = "917788994131"; // Company phone number (without '+')
-  const defaultMessage = "Hello! Can we get in touch?"; // Pre-filled message from company side
-  const whatsappURL = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(defaultMessage)}`;
+document.addEventListener("DOMContentLoaded", function () {
+  const whatsappButton = document.querySelector(".social-button.whatsapp");
   
-  window.open(whatsappURL, "_blank");
+  whatsappButton.addEventListener("click", function () {
+      const phoneNumber = "917788994131"; // Company phone number (without '+')
+      const defaultMessage = "Hello! Can we get in touch?"; // Pre-filled message from company side
+      const whatsappURL = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(defaultMessage)}`;
+
+      // Open WhatsApp URL in a new tab
+      window.open(whatsappURL, "_blank");
+  });
 });
 
 

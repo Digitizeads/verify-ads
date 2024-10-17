@@ -122,10 +122,19 @@ document.querySelector('.social-button.linkedin').addEventListener('click', func
     window.location.href = 'skype:live:8e8997a5794b1e91?chat';
   });
   
-  // Event listener for the WhatsApp button
-  document.querySelector('.social-button.whatsapp').addEventListener('click', function() {
-    window.open('https://wa.me/+917788994131', '_blank');
+ // Event listener for the WhatsApp button
+document.addEventListener("DOMContentLoaded", function () {
+  const whatsappButton = document.querySelector(".social-button.whatsapp");
+  
+  whatsappButton.addEventListener("click", function () {
+      const phoneNumber = "917788994131"; // Company phone number (without '+')
+      const defaultMessage = "Hello! Can we get in touch?"; // Pre-filled message from company side
+      const whatsappURL = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(defaultMessage)}`;
+
+      // Open WhatsApp URL in a new tab
+      window.open(whatsappURL, "_blank");
   });
+});
 
   document.querySelector('.map').addEventListener('click', function() {
     // Latitude and Longitude from the provided URL

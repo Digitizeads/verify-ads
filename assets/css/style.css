@@ -601,9 +601,10 @@ header .container {
 
 .hero {
   position: relative;
-  padding: 130px 0 140px;
+  padding: 80px 20px 100px;  /* Adjusted for mobile */
   z-index: 1;
   display: flex;
+  flex-direction: column;  /* Column layout for mobile */
   justify-content: center;
   align-items: center;
   opacity: 0; /* Initially hidden */
@@ -612,20 +613,21 @@ header .container {
 
 .hero-content {
   text-align: center;
-  margin-right: auto;
+  margin: 0 auto;
   opacity: 0; /* Initially hidden */
   animation: fade-in 2s ease-in-out forwards 0.5s; /* Delayed fade-in for content */
+  padding: 0 20px; /* Add some padding for content on mobile */
 }
 
 .hero-title,
 .hero-text {
-  margin-bottom: 40px;
+  margin-bottom: 30px;  /* Smaller margin for mobile */
   opacity: 0; /* Initially hidden */
   animation: fade-in 2.5s ease-in-out forwards 0.7s; /* More delayed for text */
 }
 
 .hero-text {
-  font-size: var(--fs-4);
+  font-size: var(--fs-5);  /* Smaller font size for mobile */
   color: var(--oxford-blue);
 }
 
@@ -633,27 +635,22 @@ header .container {
   margin-inline: auto;
   opacity: 0; /* Initially hidden */
   animation: fade-in 2s ease-in-out forwards 1s; /* Delayed for button */
+  padding: 10px 20px; /* Adjust button padding for mobile */
 }
 
 .hero-banner {
-  display: none;
-}
-
-.hbanner {
-  display: block;
-  margin-right: 20px; /* Adjust spacing as needed */
+  display: none;  /* Hidden on mobile */
 }
 
 .shape-content {
   position: absolute;
-  width: 900px;
-  top: -230px;
-  right: -300px;
+  width: 400px;  /* Smaller shape size for mobile */
+  top: -150px;
+  right: -150px;
   z-index: -1;
   opacity: 0; /* Initially hidden */
   animation: fade-in 3s ease-in-out forwards 0.3s; /* Delayed and slow fade-in for shape */
 }
-
 
 
 .about {
@@ -1803,13 +1800,18 @@ footer {
    * HERO 
    */
 
-  .hero {
-    padding: 100px 0 110px;
+   .hero {
+    padding: 100px 20px 120px;  /* Adjust padding for small screens */
+  }
+
+  .hbanner{
+    max-width: auto;
   }
 
   .shape-content {
-    top: -70px;
-    right: -260px;
+    top: -100px;
+    right: -200px;  /* Adjust position for larger screens */
+    width: 600px;   /* Increase shape size */
   }
 
   /**
@@ -1926,16 +1928,26 @@ footer {
   .about-bottom-banner {
     margin-bottom: 100px;
   }
-   .hero-content,
-   /* .about-bottom-content, */
-   .expert-bottom-content {
-     text-align: left;
-   }
- 
-   .shape-content {
-     top: -156px;
-     right: -152px;
-   }
+  .hero {
+    padding: 120px 30px 140px;  /* More padding for medium screens */
+  }
+
+  .hbanner{
+    max-width: auto;
+  }
+
+  .hero-content,
+  .hero-title,
+  .hero-text {
+    text-align: left;  /* Align content to the left */
+    margin: 0;  /* Remove auto margin */
+  }
+  
+  .shape-content {
+    top: -70px;
+    right: -260px;
+    width: 700px;  /* Increase shape size */
+  }
  
    .hero .btn-primary,
    .about-bottom .btn-secondary,
@@ -1998,11 +2010,34 @@ footer {
     max-width: auto;
   }
 
+  .hero {
+    padding: 130px 40px 150px;  /* Larger padding for tablet screens */
+    flex-direction: row;  /* Side-by-side layout for larger screens */
+  }
+
+  .hero-content {
+    text-align: left;
+    max-width: 600px;
+    margin-right: 40px;  /* Add margin for spacing */
+  }
+
+  .hero-banner {
+    display: block;
+    position: relative;
+    width: 400px;  /* Smaller banner image */
+  }
+
+  .shape-content {
+    top: -150px;
+    right: -300px;
+    width: 800px;  /* Larger shape for tablet */
+  }
+
   /**
    * ABOUT
    */
 
-   .about-list {
+    .about-list {
     grid-template-columns: 1fr 1fr; /* Two columns layout */
     gap: 30px;
   }
@@ -2095,20 +2130,47 @@ footer {
    * HERO
    */
 
+   .hero {
+    padding: 150px 60px 160px;  /* More padding for laptop screens */
+    flex-direction: row;  /* Switch to row layout on larger screens */
+    justify-content: space-between;  /* Align content side-by-side */
+    align-items: center;  /* Vertically center content */
+  }
+
   .hero-content {
-    max-width: 900px;
+    text-align: left;  /* Align text to the left on larger screens */
+    max-width: 600px;  /* Limit width for content */
+    margin: 0;  /* Remove auto margin */
+    padding: 0;  /* Remove padding for laptop screens */
+  }
+
+  .hero-title,
+  .hero-text {
+    margin-bottom: 20px;  /* Adjust margin between elements */
+  }
+
+  .hero-text {
+    font-size: var(--fs-4);  /* Increase font size for laptop screens */
+  }
+
+  .hero .btn-primary {
+    margin-inline: 0;  /* Remove auto margin, align left */
+    padding: 15px 30px;  /* Increase padding for the button */
+    font-size: var(--fs-5);  /* Slightly larger button text */
   }
 
   .hero-banner {
-    display: block;
-    position: absolute;
-    top: 50%;
-    right: 0;
-    transform: translateY(-50%);
-    width: 500px;
-    padding-top: 500px;
+    display: block;  /* Show banner on laptop screens */
+    position: relative;  /* Relative positioning for better control */
+    width: 500px;  /* Larger width for laptop */
     background: url("../images/hero-banner.png") no-repeat;
     background-size: contain;
+  }
+
+  .shape-content {
+    top: -230px;  /* Adjust positioning for larger screens */
+    right: -300px;  /* Shift to the right */
+    width: 700px;  /* Larger shape for laptop */
   }
 
   /**

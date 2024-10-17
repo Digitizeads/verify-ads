@@ -1088,11 +1088,11 @@ header .container {
 }
 
 /* counter */
+/* Base Styles (for larger screens like desktops) */
 .achievement-container {
   background: #fff;
   padding: 40px;
   border-radius: 12px;
-  /* box-shadow: 0 0 15px rgba(255, 55, 0, 0.1); */
   text-align: center;
   width: auto;
   margin: 20px;
@@ -1130,67 +1130,87 @@ header .container {
   font-weight: bold;
 }
 
-.boxes {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  grid-gap: 20px;
-  width: 80%;
-  max-width: 1200px;
-  padding: 20px;
-}
-
-.box {
-  background-color: var(--silver-chalice);
-  color: var(--oxford-blue);
-  padding: 20px;
-  text-align: center;
-  border-radius: 10px;
-  transition: transform 0.3s ease, background-color 0.3s;
-}
-
-.box:hover {
-  background-color: var(--bittersweet);
-  color: white;
-  transform: scale(1.05); /* Slight scaling effect on hover */
-}
-
-/* First row - right to left */
-.row-1 .box {
-  animation: move-left 15s linear infinite;
-}
-
-.row-2 .box {
-  animation: move-right 15s linear infinite;
-}
-
-.row-3 .box {
-  animation: move-left 15s linear infinite;
-}
-
-@keyframes move-left {
-  0% {
-    transform: translateX(100vw);
+/* Medium Screens (Tablets) */
+@media screen and (max-width: 1024px) {
+  .achievement-container {
+    padding: 30px;
   }
-  100% {
-    transform: translateX(-100vw);
+
+  .achievement-container h2 {
+    font-size: 2em;
+  }
+
+  .achievement-details {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .achievement-item {
+    width: 80%;
+    margin-bottom: 20px;
+  }
+
+  .achievement-item h3 {
+    font-size: 1.1em;
+  }
+
+  .counter-number {
+    font-size: 2em;
   }
 }
 
-@keyframes move-right {
-  0% {
-    transform: translateX(-100vw);
+/* Small Screens (Phones) */
+@media screen and (max-width: 768px) {
+  .achievement-container {
+    padding: 20px;
   }
-  100% {
-    transform: translateX(100vw);
+
+  .achievement-container h2 {
+    font-size: 1.8em;
+  }
+
+  .achievement-details {
+    flex-direction: column;
+  }
+
+  .achievement-item {
+    width: 90%;
+    margin-bottom: 20px;
+  }
+
+  .achievement-item h3 {
+    font-size: 1em;
+  }
+
+  .counter-number {
+    font-size: 1.8em;
   }
 }
 
-/* Responsive Design for smaller screens */
-@media (max-width: 768px) {
-  .boxes {
-    grid-template-columns: 1fr; /* Make the grid single-column on smaller screens */
+/* Extra Small Screens (Very small phones) */
+@media screen and (max-width: 480px) {
+  .achievement-container {
+    padding: 15px;
+  }
+
+  .achievement-container h2 {
+    font-size: 1.5em;
+  }
+
+  .achievement-item {
+    width: 100%;
+  }
+
+  .achievement-item h3 {
+    font-size: 0.9em;
+  }
+
+  .counter-number {
+    font-size: 1.5em;
   }
 }
+
+
 
 /* newsletter */
 

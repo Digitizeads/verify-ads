@@ -1492,9 +1492,7 @@ footer {
     height: auto; /* Maintain aspect ratio */
   }
 
-  #loading-screen {
-    /* Additional mobile-specific styles can be added here if needed */
-  }
+  
 }
 
 #main-content {

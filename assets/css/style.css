@@ -1815,7 +1815,7 @@ footer {
   }
 
   .expert-bottom-banner {
-    max-width: 400px;
+    max-width: auto;
     margin-inline: auto;
     margin-bottom: 40px;
   }
@@ -1860,7 +1860,7 @@ footer {
    */
 
   .container {
-    max-width: 550px;
+    max-width: auto;
     margin-inline: auto;
   }
 
@@ -1947,7 +1947,7 @@ footer {
    */
 
   .container {
-    max-width: 740px;
+    max-width: auto;
   }
 
   /**
@@ -1999,7 +1999,7 @@ footer {
    */
 
   .container {
-    max-width: 950px;
+    max-width: auto;
   }
 
   /**
@@ -2042,7 +2042,7 @@ footer {
    */
 
   .hero-content {
-    max-width: 550px;
+    max-width: auto;
   }
 
   .hero-banner {
@@ -2062,7 +2062,7 @@ footer {
    */
 
   .about-top .section-text {
-    max-width: 650px;
+    max-width: auto;
     margin-inline: auto;
   }
 
@@ -2087,7 +2087,7 @@ footer {
   }
 
   .about-top .section-text {
-    max-width: 650px;
+    max-width: auto;
     margin-inline: auto;
   }
 
@@ -2116,7 +2116,7 @@ footer {
    */
 
   .features :is(.section-title, .section-text) {
-    max-width: 650px;
+    max-width: auto;
     margin-inline: auto;
   }
 
@@ -2220,7 +2220,7 @@ footer {
    */
 
   .container {
-    max-width: 1150px;
+    max-width: auto;
   }
 
   /**
@@ -2252,6 +2252,6 @@ footer {
   }
 
   .features :is(.section-title, .section-text) {
-    max-width: 850px;
+    max-width: auto;
   }
 }

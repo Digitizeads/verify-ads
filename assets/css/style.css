@@ -1793,7 +1793,7 @@ footer {
   }
 
   .about-bottom-banner {
-    max-width: 400px;
+    max-width: auto;
     margin-inline: auto;
     margin-bottom: 40px;
   }

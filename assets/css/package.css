@@ -503,6 +503,12 @@ table tbody td {
   .social-button:hover span {
     opacity: 1;
   }
+  /* Hide social buttons on mobile screens (max-width: 768px) */
+@media screen and (max-width: 768px) {
+  .social-button {
+    display: none;
+  }
+}
   
   /*-----------------------------------*\ 
        * #HEADER

@@ -2348,9 +2348,27 @@ footer {
     height: 400px;
   }
 
-  .expert-bottom-banner {
-    height: 400px;
-  }
+  .expert-list {
+    grid-template-columns: repeat(3, 1fr); /* 3 items in a row */
+    gap: 40px;
+}
+
+.expert-item img {
+    height: 180px; /* Fix height for uniformity */
+    object-fit: cover; /* Ensure images fit without distortion */
+}
+
+.expert-item {
+    padding: 25px; /* More padding for larger screens */
+}
+
+/* .expert-title {
+    font-size: 24px;
+} */
+
+.expert-description {
+    font-size: 18px;
+}
 
   /**
    * FEATURES

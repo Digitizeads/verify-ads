@@ -777,7 +777,7 @@ header .container {
     /* padding: 50px 0; */
     text-align: center;
     /* padding-top: 100px; */
-    padding-bottom: 101px;
+    /* padding-bottom: 101px; */
   }
   
   .features .section-title {
@@ -1398,7 +1398,7 @@ header .container {
         }
         
         .faq-left-content img{
-            width: 75%;
+            width: 50%;
             display: block;
             margin: -1.5rem auto;
 

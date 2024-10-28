@@ -48,3 +48,49 @@ document.addEventListener("DOMContentLoaded", function () {
         .catch(error => console.error('Error loading footer:', error));
 });
 
+
+
+// scripts.js
+
+document.addEventListener("DOMContentLoaded", function () {
+  const searchInput = document.getElementById("search-input");
+  const tagButtons = document.querySelectorAll(".tag-button");
+  const posts = document.querySelectorAll(".post");
+
+  // Filter posts by tag
+  tagButtons.forEach(button => {
+      button.addEventListener("click", function () {
+          const tag = button.getAttribute("data-tag");
+          filterPostsByTag(tag);
+      });
+  });
+
+  // Filter posts based on search input
+  searchInput.addEventListener("input", function () {
+      const query = searchInput.value.toLowerCase();
+      filterPostsBySearch(query);
+  });
+
+  function filterPostsByTag(tag) {
+      posts.forEach(post => {
+          const postTags = post.getAttribute("data-tags").split(" ");
+          if (postTags.includes(tag)) {
+              post.style.display = "flex";
+          } else {
+              post.style.display = "none";
+          }
+      });
+  }
+
+  function filterPostsBySearch(query) {
+      posts.forEach(post => {
+          const title = post.querySelector("h2").innerText.toLowerCase();
+          const content = post.querySelector("p").innerText.toLowerCase();
+          if (title.includes(query) || content.includes(query)) {
+              post.style.display = "flex";
+          } else {
+              post.style.display = "none";
+          }
+      });
+  }
+});

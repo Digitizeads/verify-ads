@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Team</title>
+  <title>Blog</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" />
 
 
@@ -81,10 +81,7 @@
               <div class="dropdown">
                 <a href="about.html" class="nav-link" class="dropdown-toggle">About</a>
                 <div class="dropdown-content">
-                  <a href="about.html">About Us</a>
                   <a href="team.html">Our Team</a>
-                  <a href="carrer.html">Careers</a>
-                  <a href="contact.html">Contact Us</a>
                 </div>
               </div>
             </li>
@@ -140,79 +137,58 @@
     <!-- Header content removed as requested -->
     <div class="expert-text">
       <h2 class="heading">Blog</h2>
-      <p>Verify Ads provides highly experienced virtual assistants with subject matter expertise across a wide
-        selection of industries.</p>
+      <!-- <p>Verify Ads provides highly experienced virtual assistants with subject matter expertise across a wide
+        selection of industries.</p> -->
     </div>
   </section>
 
-  <section class="blog-posts">
-    <div class="container">
-      <div class="blog-grid">
-        <article class="blog-post">
-          <img src="./assets/img/blog1.png" alt="Blog Post 1">
-          <h2>Top 10 SEO Strategies for 2024</h2>
-          <p>Discover the latest SEO strategies that will dominate in 2024...</p>
-          <a href="#" class="read-more">Read More</a>
+  <section class="blog-container">
+    <aside class="sidebar">
+        <div class="search-bar">
+            <input type="text" id="search-input" placeholder="Search articles..." />
+        </div>
+        <div class="categories">
+            <h3>Categories</h3>
+            <ul>
+                <li><a href="#">SEO (4)</a></li>
+            </ul>
+        </div>
+        <div class="latest-posts">
+            <h3>Latest Posts</h3>
+            <p>No posts were found.</p>
+        </div>
+        <div class="tags">
+            <h3>Tags</h3>
+            <div>
+                <button class="tag-button" data-tag="SEO">SEO</button>
+                <button class="tag-button" data-tag="LocalBusiness">Local Business</button>
+                <button class="tag-button" data-tag="RealEstateSEO">Real Estate SEO</button>
+                <button class="tag-button" data-tag="SmallBusiness">Small Business</button>
+            </div>
+        </div>
+    </aside>
+
+    <main class="content" id="post-list">
+        <article class="post" data-tags="SEO RealEstateSEO">
+            <img src="real-estate-traffic.jpg" alt="Boost Your Real Estate Traffic" />
+            <div class="post-content">
+                <h2>How To Boost Your Real Estate Website Traffic</h2>
+                <p class="meta">October 24, 2024 | SEO</p>
+                <p class="summary">In the fast-growing world of real estate, location is vital. The recent stats show that the majority of homebuyers...<a href="#">Read more</a></p>
+            </div>
         </article>
 
-        <article class="blog-post">
-          <img src="./assets/img/blog2.png" alt="Blog Post 2">
-          <h2>How to Optimize Your PPC Campaigns</h2>
-          <p>Learn the best practices for optimizing your PPC campaigns...</p>
-          <a href="#" class="read-more">Read More</a>
+        <article class="post" data-tags="SEO LocalBusiness SmallBusiness">
+            <img src="local-seo.jpg" alt="Local SEO for Small Businesses" />
+            <div class="post-content">
+                <h2>A Complete Guide To Local SEO For Small Businesses</h2>
+                <p class="meta">October 22, 2024 | SEO</p>
+                <p class="summary">In today's digital realm, having a strong online presence is vital for small businesses...<a href="#">Read more</a></p>
+            </div>
         </article>
+    </main>
+</section>
 
-        <article class="blog-post">
-          <img src="./assets/img/blog3.png" alt="Blog Post 3">
-          <h2>The Future of Social Media Marketing</h2>
-          <p>Explore what the future holds for social media marketing...</p>
-          <a href="#" class="read-more">Read More</a>
-        </article>
-
-        <article class="blog-post">
-          <img src="./assets/img/blog1.png" alt="Blog Post 1">
-          <h2>Top 10 SEO Strategies for 2024</h2>
-          <p>Discover the latest SEO strategies that will dominate in 2024...</p>
-          <a href="#" class="read-more">Read More</a>
-        </article>
-
-        <article class="blog-post">
-          <img src="./assets/img/blog2.png" alt="Blog Post 2">
-          <h2>How to Optimize Your PPC Campaigns</h2>
-          <p>Learn the best practices for optimizing your PPC campaigns...</p>
-          <a href="#" class="read-more">Read More</a>
-        </article>
-
-        <article class="blog-post">
-          <img src="./assets/img/blog3.png" alt="Blog Post 3">
-          <h2>The Future of Social Media Marketing</h2>
-          <p>Explore what the future holds for social media marketing...</p>
-          <a href="#" class="read-more">Read More</a>
-        </article>
-        <article class="blog-post">
-          <img src="./assets/img/blog1.png" alt="Blog Post 1">
-          <h2>Top 10 SEO Strategies for 2024</h2>
-          <p>Discover the latest SEO strategies that will dominate in 2024...</p>
-          <a href="#" class="read-more">Read More</a>
-        </article>
-
-        <article class="blog-post">
-          <img src="./assets/img/blog2.png" alt="Blog Post 2">
-          <h2>How to Optimize Your PPC Campaigns</h2>
-          <p>Learn the best practices for optimizing your PPC campaigns...</p>
-          <a href="#" class="read-more">Read More</a>
-        </article>
-
-        <article class="blog-post">
-          <img src="./assets/img/blog3.png" alt="Blog Post 3">
-          <h2>The Future of Social Media Marketing</h2>
-          <p>Explore what the future holds for social media marketing...</p>
-          <a href="#" class="read-more">Read More</a>
-        </article>
-      </div>
-    </div>
-
-  </section>
 
 
   <div class="social-button whatsapp">

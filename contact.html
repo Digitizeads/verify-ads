@@ -312,7 +312,8 @@
       formData.append('services', services.join(', '));
 
       // Send data to the API
-      fetch('http://localhost/restapi/contact/contact', { // Change to production URL
+      // fetch('http://localhost/restapi/contact/contact', { // Change to production URL
+      fetch('https://verifyads.com/restapi/contact/contact', { // Change to production URL
         method: 'POST',
         body: formData,
       })

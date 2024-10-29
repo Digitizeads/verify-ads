@@ -11,9 +11,14 @@ require_once 'phpmailer/src/Exception.php';
 require_once 'phpmailer/src/PHPMailer.php';
 require_once 'phpmailer/src/SMTP.php';
 
-$servername = "localhost";
+/* $servername = "localhost";
 $username = "root";
 $password = "";
+$dbname = "verifyads"; */
+
+$servername = "localhost";
+$username = "verifyadmin";
+$password = "qq%*=W=5;j6f";
 $dbname = "verifyads";
 
 // Create connection
@@ -106,8 +111,8 @@ if (isset($_POST['reset_request'])) {
 
         if ($updateStmt->execute()) {
             // Create a password reset link with the token
-            $resetLink = "http://localhost/verify-ads/reset_password.php?token=" . $token;
-            /*  $resetLink = WEBSERVICEAPI_URL . "/reset_password.php?token=" . $token; */
+            // $resetLink = "http://localhost/verify-ads/reset_password.php?token=" . $token;
+            $resetLink = "https://verifyads.com/reset_password.php?token=" . $token;
 
             // Initialize PHPMailer
             $mail = new PHPMailer(true);
@@ -117,13 +122,13 @@ if (isset($_POST['reset_request'])) {
                 $mail->isSMTP();                                            // Send using SMTP
                 $mail->Host       = 'smtp.gmail.com';                     // Set the SMTP server to send through
                 $mail->SMTPAuth   = true;                                   // Enable SMTP authentication
-                $mail->Username   = 'rajat.web71@gmail.com';               // SMTP username
-                $mail->Password   = 'ctwh vyny rrdh nwcu';                  // SMTP password
+                $mail->Username   = 'digitalpabitra@gmail.com';               // SMTP username
+                $mail->Password   = 'hqog evqx wgtw fadm';                  // SMTP password
                 $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;         // Enable TLS encryption; `PHPMailer::ENCRYPTION_SMTPS` encouraged
                 $mail->Port       = 587;                                    // TCP port to connect to
 
                 //Recipients
-                $mail->setFrom('rajat.web71@gmail.com', 'Verify-ads');
+                $mail->setFrom('digitalpabitra@gmail.com', 'Verify-ads');
                 $mail->addAddress($email);                                  // Add a recipient
 
                 // Content
@@ -214,8 +219,8 @@ $conn->close();
 
             <!-- Added hyperlink below the forms -->
             <div class="text-center mt-3">
-                <a href="http://localhost/verify-ads" class="text-decoration-none">Go to Verify Ads Platform</a>
-                <!-- <a href="https://verify-ads.com" class="text-decoration-none">Go to Verify Ads Platform</a> -->
+                <!-- <a href="../../verify-ads" class="text-decoration-none">Go to Verify Ads Platform</a> -->
+                <a href="https://verifyads.com" class="text-decoration-none">Go to Verify Ads Platform</a>
             </div>
         </div>
     </div>

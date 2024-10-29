@@ -1,10 +1,10 @@
-<?php 
+<?php
 session_start(); // Start the session
 
 // Check if the user is logged in
 if (!isset($_SESSION['logged_in']) || $_SESSION['logged_in'] !== true) {
-    header('Location: admin'); // Redirect to login page if not logged in
-    exit();
+  header('Location: admin'); // Redirect to login page if not logged in
+  exit();
 }
 
 // Prevent caching
@@ -30,11 +30,6 @@ header("Expires: 0");
   <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <div class="container-fluid">
       <div class="collapse navbar-collapse" id="navbarNav">
-        <!-- <ul class="navbar-nav">
-          <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="home">Home</a>
-          </li>
-        </ul> -->
 
         <!-- Admin Page Title in Center -->
         <span class="navbar-text">
@@ -92,12 +87,18 @@ header("Expires: 0");
           </thead>
           <tbody id="resultBody">
             <?php
-            // Database connection settings
-            $host = 'localhost';
+            // Database connection settings for local
+            /* $host = 'localhost';
             $db = 'verifyads';
             $user = 'root';
-            $password = '';
+            $password = ''; */
 
+            //Database connection for Live
+            $servername = "localhost";
+            $username = "verifyadmin";
+            $password = "qq%*=W=5;j6f";
+            $dbname = "verifyads";
+            
             // Create connection
             $conn = new mysqli($host, $user, $password, $db);
 
@@ -166,21 +167,21 @@ header("Expires: 0");
     href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.8.1/font/bootstrap-icons.min.css">
 
   <script>
-    $(document).ready(function () {
+    $(document).ready(function() {
       // Reset button functionality
-      $('#resetBtn').click(function () {
+      $('#resetBtn').click(function() {
         $('#fromDate').val(''); // Clear from date
-        $('#toDate').val('');   // Clear to date
+        $('#toDate').val(''); // Clear to date
         window.location.href = window.location.pathname; // Reload the page without query parameters
       });
 
       // Select All checkbox functionality
-      $('#selectAll').click(function () {
+      $('#selectAll').click(function() {
         $('.rowCheckbox').prop('checked', this.checked);
       });
 
       // Event for individual checkboxes
-      $(document).on('change', '.rowCheckbox', function () {
+      $(document).on('change', '.rowCheckbox', function() {
         if ($('.rowCheckbox:checked').length < $('.rowCheckbox').length) {
           $('#selectAll').prop('checked', false); // Uncheck "Select All" if any individual checkbox is unchecked
         } else {
@@ -195,9 +196,9 @@ header("Expires: 0");
       }
 
       // Action button validation and download
-      $('#actionButton').click(function () {
+      $('#actionButton').click(function() {
         const selectedIds = [];
-        $('.rowCheckbox:checked').each(function () {
+        $('.rowCheckbox:checked').each(function() {
           const row = $(this).closest('tr');
           const id = row.find('td:nth-child(2)').text(); // Adjust as per your ID column
           selectedIds.push(id);
@@ -211,10 +212,14 @@ header("Expires: 0");
           $.ajax({
             type: "POST",
             url: "download_excel.php",
-            data: { ids: selectedIds },
-            success: function (data) {
+            data: {
+              ids: selectedIds
+            },
+            success: function(data) {
               // Create a blob and a link to download the file
-              const blob = new Blob([data], { type: 'application/vnd.ms-excel' });
+              const blob = new Blob([data], {
+                type: 'application/vnd.ms-excel'
+              });
               const url = URL.createObjectURL(blob);
               const a = document.createElement('a');
               a.href = url;
@@ -228,7 +233,7 @@ header("Expires: 0");
               window.URL.revokeObjectURL(url);
               document.body.removeChild(a);
             },
-            error: function () {
+            error: function() {
               alert('An error occurred while downloading the file.');
             }
           });

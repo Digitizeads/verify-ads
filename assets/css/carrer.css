@@ -27,20 +27,20 @@ body {
 
 /* Header Styles */
 .carrer {
-    height: 50vh;
-    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.8)), url(image/career.jpg);
-    background-position: 50% 40%;
-    background-repeat: no-repeat;
-    background-size: 100%; /* Zoom out the image */
-    background-attachment: fixed;
-    text-align: center;
-    color: #fff;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+  height: 50vh;
+  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.8)),
+    url(image/career.jpg);
+  background-position: 50% 40%;
+  background-repeat: no-repeat;
+  background-size: 100%; /* Zoom out the image */
+  background-attachment: fixed;
+  text-align: center;
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
-
 
 .heading {
   text-align: center;
@@ -535,126 +535,134 @@ body {
      * #HEADER
     \*-----------------------------------*/
 
-    .top-bar-container {
-      margin-bottom: 30px;
-      animation: fade-in 1.5s ease-in-out;
-     
-      -webkit-animation: fade-in 1.5s ease-in-out;
-    }
-    
-    .top-bar {
-      background-color: #1c1b29; /* Dark background */
-      color: #fff;
-      padding: 10px 65px; /* Adjust padding for better alignment */
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      font-family: 'Poppins', sans-serif;
-      font-size: 14px; /* Adjust font size for better readability */
-      opacity: 0; /* Initially hidden */
-      animation: fade-in 1.5s ease-in-out forwards; /* Apply fade-in effect */
-    }
-    
-    .contact-info {
-      display: flex;
-      gap: 30px; /* Increase gap for more spacing */
-      align-items: center;
-      opacity: 0; /* Initially hidden */
-      animation: fade-in 2s ease-in-out forwards 0.5s; /* Delay for staggered effect */
-    }
-    
-    .contact-info .phone, .contact-info .email {
-      display: flex;
-      align-items: center;
-      gap: 8px; /* Slightly increase the gap */
-    }
-    
-    .contact-info i {
-      color: var(--bittersweet); /* Red-orange icon color */
-    }
-    
-    .social-icons {
-      display: flex;
-      gap: 20px;
-      opacity: 0;
-      animation: fade-in 1s ease-in-out forwards 1s;
-      -webkit-animation: fade-in 1s ease-in-out forwards 1s;
-    }
-    
-    .social-icon {
-      background-color: #fff;
-      border-radius: 50%;
-      width: 35px;
-      height: 35px;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      color: var(--bittersweet);
-      opacity: 0; /* Initially hidden */
-      animation: fade-in 2s ease-in-out forwards 1.2s; /* Delay for staggered effect */
-    }
-    
-    .social-icon {
-      position: relative; /* Required for the ::after pseudo-element */
-      transition: all 0.3s ease; /* Smooth transition */
-    }
-    
-    .social-icon:hover {
-      background: linear-gradient(45deg,hsl(2, 90%, 70%), hsl(21, 100%, 50%)); /* Gradient background on hover */
-      color: var(--white);
-      box-shadow: 0 8px 16px rgba(255, 60, 0, 0.653); /* More pronounced shadow on hover */
-      transform: translateY(-2px); /* Slight lift effect */
-    }
-    
-    .social-icon::after {
-      content: "";
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 0;
-      height: 100%;
-      background: rgba(255, 255, 255, 0.3);
-      /*Lightoverlayeffect*/transition: all 0.3s ease;
-      border-radius: 20px;
-      -webkit-border-radius: 20px;
-      -moz-border-radius: 20px;
-      -ms-border-radius: 20px;
-      -o-border-radius: 20px;
-    }
-    
-    .social-icon:hover::after {
-      width: 100%;
-    }
-    
-    /* Phone and Email hover effects */
-    .phone:hover, .email:hover {
-      color: #ff4500;
-      transform: translateY(-2px); /* Lift effect */
-    }
-    
-    .phone i:hover, .email i:hover {
-      color: #fff;
-      transform: translateY(-2px); /* Lift effect on icon */
-    }
-    
-    /* Adding shadow effect on phone and email hover */
-    .phone:hover, .email:hover {
-      box-shadow: 0 8px 16px rgba(255, 60, 0, 0.653); /* Similar shadow effect */
-    }
-    
-    
-    /* Keyframes for fade-in effect */
-    @keyframes fade-in {
-      0% {
-        opacity: 0;
-        transform: translateY(20px); /* Start slightly below */
-      }
-      100% {
-        opacity: 1;
-        transform: translateY(0); /* End in place */
-      }
-    }
-    /* Media Queries */
+.top-bar-container {
+  margin-bottom: 30px;
+  animation: fade-in 1.5s ease-in-out;
+
+  -webkit-animation: fade-in 1.5s ease-in-out;
+}
+
+.top-bar {
+  background-color: #1c1b29; /* Dark background */
+  color: #fff;
+  padding: 10px 65px; /* Adjust padding for better alignment */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-family: "Poppins", sans-serif;
+  font-size: 14px; /* Adjust font size for better readability */
+  opacity: 0; /* Initially hidden */
+  animation: fade-in 1.5s ease-in-out forwards; /* Apply fade-in effect */
+}
+
+.contact-info {
+  display: flex;
+  gap: 30px; /* Increase gap for more spacing */
+  align-items: center;
+  opacity: 0; /* Initially hidden */
+  animation: fade-in 2s ease-in-out forwards 0.5s; /* Delay for staggered effect */
+}
+
+.contact-info .phone,
+.contact-info .email {
+  display: flex;
+  align-items: center;
+  gap: 8px; /* Slightly increase the gap */
+}
+
+.contact-info i {
+  color: var(--bittersweet); /* Red-orange icon color */
+}
+
+.social-icons {
+  display: flex;
+  gap: 20px;
+  opacity: 0;
+  animation: fade-in 1s ease-in-out forwards 1s;
+  -webkit-animation: fade-in 1s ease-in-out forwards 1s;
+}
+
+.social-icon {
+  background-color: #fff;
+  border-radius: 50%;
+  width: 35px;
+  height: 35px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: var(--bittersweet);
+  opacity: 0; /* Initially hidden */
+  animation: fade-in 2s ease-in-out forwards 1.2s; /* Delay for staggered effect */
+}
+
+.social-icon {
+  position: relative; /* Required for the ::after pseudo-element */
+  transition: all 0.3s ease; /* Smooth transition */
+}
+
+.social-icon:hover {
+  background: linear-gradient(
+    45deg,
+    hsl(2, 90%, 70%),
+    hsl(21, 100%, 50%)
+  ); /* Gradient background on hover */
+  color: var(--white);
+  box-shadow: 0 8px 16px rgba(255, 60, 0, 0.653); /* More pronounced shadow on hover */
+  transform: translateY(-2px); /* Slight lift effect */
+}
+
+.social-icon::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 0;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.3);
+  /*Lightoverlayeffect*/
+  transition: all 0.3s ease;
+  border-radius: 20px;
+  -webkit-border-radius: 20px;
+  -moz-border-radius: 20px;
+  -ms-border-radius: 20px;
+  -o-border-radius: 20px;
+}
+
+.social-icon:hover::after {
+  width: 100%;
+}
+
+/* Phone and Email hover effects */
+.phone:hover,
+.email:hover {
+  color: #ff4500;
+  transform: translateY(-2px); /* Lift effect */
+}
+
+.phone i:hover,
+.email i:hover {
+  color: #fff;
+  transform: translateY(-2px); /* Lift effect on icon */
+}
+
+/* Adding shadow effect on phone and email hover */
+.phone:hover,
+.email:hover {
+  box-shadow: 0 8px 16px rgba(255, 60, 0, 0.653); /* Similar shadow effect */
+}
+
+/* Keyframes for fade-in effect */
+@keyframes fade-in {
+  0% {
+    opacity: 0;
+    transform: translateY(20px); /* Start slightly below */
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0); /* End in place */
+  }
+}
+/* Media Queries */
 
 /* Small Devices (phones) */
 @media (max-width: 767px) {
@@ -718,19 +726,19 @@ body {
     height: 40px;
   }
 }
-    
-    header {
-      position: relative;
-      padding: 0px 0;
-      z-index: 2;
-    }
-    
-    header .container {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 7px 15px 20px;
-    }
+
+header {
+  position: relative;
+  padding: 0px 0;
+  z-index: 2;
+}
+
+header .container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 7px 15px 20px;
+}
 
 .navbar-menu-btn {
   font-size: 30px;

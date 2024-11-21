@@ -144,41 +144,45 @@
 
   <section class="blog-container">
     <aside class="sidebar">
-        <div class="search-bar">
-            <input type="text" id="search-input" placeholder="Search articles..." />
+      <div class="search-bar">
+        <input type="text" id="search-input" placeholder="Search articles..." />
+      </div>
+      <div class="categories">
+        <h3>Categories</h3>
+        <ul>
+          <li><a href="#">SEO (4)</a></li>
+        </ul>
+      </div>
+      <div class="latest-posts">
+        <h3>Latest Posts</h3>
+        <p>No posts were found.</p>
+      </div>
+      <div class="tags">
+        <h3>Tags</h3>
+        <div>
+          <button class="tag-button" data-tag="SEO">SEO</button>
+          <button class="tag-button" data-tag="LocalBusiness">Local Business</button>
+          <button class="tag-button" data-tag="RealEstateSEO">Real Estate SEO</button>
+          <button class="tag-button" data-tag="SmallBusiness">Small Business</button>
         </div>
-        <div class="categories">
-            <h3>Categories</h3>
-            <ul>
-                <li><a href="#">SEO (4)</a></li>
-            </ul>
-        </div>
-        <div class="latest-posts">
-            <h3>Latest Posts</h3>
-            <p>No posts were found.</p>
-        </div>
-        <div class="tags">
-            <h3>Tags</h3>
-            <div>
-                <button class="tag-button" data-tag="SEO">SEO</button>
-                <button class="tag-button" data-tag="LocalBusiness">Local Business</button>
-                <button class="tag-button" data-tag="RealEstateSEO">Real Estate SEO</button>
-                <button class="tag-button" data-tag="SmallBusiness">Small Business</button>
-            </div>
-        </div>
+      </div>
     </aside>
 
     <main class="content" id="post-list">
-        <article class="post" data-tags="SEO RealEstateSEO">
-            <img src="/assets/img/seo-blog.jpg" alt="Boost Your Real Estate Traffic" />
-            <div class="post-content">
-                <h2>The Role of SEO in Driving Organic Traffic</h2>
-                <p class="meta">October 24, 2024 | SEO</p>
-                <p class="summary">Getting visibility today is a challenge in the digital business due to the fierce competition in the virtual world. Search Engine Optimization (SEO) is among the most efficient ways to improve your firm’s visibility. At Verify Ads, we know that a strong SEO approach is not excessive but an important aspect in driving organic traffic to your website.<a href="the-role-of-seo-in-driving-organic-traffic.html">Read more</a></p>
-            </div>
-        </article>
+      <article class="post" data-tags="SEO RealEstateSEO">
+        <img src="/assets/img/seo-blog.jpg" alt="Boost Your Real Estate Traffic" />
+        <div class="post-content">
+          <h2>The Role of SEO in Driving Organic Traffic</h2>
+          <p class="meta">October 24, 2024 | SEO</p>
+          <p class="summary">Getting visibility today is a challenge in the digital business due to the fierce
+            competition in the virtual world. Search Engine Optimization (SEO) is among the most efficient ways to
+            improve your firm’s visibility. At Verify Ads, we know that a strong SEO approach is not excessive but an
+            important aspect in driving organic traffic to your website.<a
+              href="the-role-of-seo-in-driving-organic-traffic.html">Read more</a></p>
+        </div>
+      </article>
 
-        <!-- <article class="post" data-tags="SEO LocalBusiness SmallBusiness">
+      <!-- <article class="post" data-tags="SEO LocalBusiness SmallBusiness">
             <img src="local-seo.jpg" alt="Local SEO for Small Businesses" />
             <div class="post-content">
                 <h2>A Complete Guide To Local SEO For Small Businesses</h2>
@@ -187,7 +191,7 @@
             </div>
         </article> -->
     </main>
-</section>
+  </section>
 
 
 
@@ -211,23 +215,23 @@
     <span>map</span>
   </div>
 
-    <div id="footer-placeholder"></div>
-  
+  <div id="footer-placeholder"></div>
+
 
   <script src="./assets/js/blog.js"></script>
   <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
   <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
   <script>
     // Load the footer dynamically
-    document.addEventListener("DOMContentLoaded", function() {
-        fetch("footer.html")
-            .then(response => response.text())
-            .then(data => {
-                document.getElementById("footer-placeholder").innerHTML = data;
-            })
-            .catch(error => console.error('Error loading footer:', error));
+    document.addEventListener("DOMContentLoaded", function () {
+      fetch("footer.html")
+        .then(response => response.text())
+        .then(data => {
+          document.getElementById("footer-placeholder").innerHTML = data;
+        })
+        .catch(error => console.error('Error loading footer:', error));
     });
-</script>
+  </script>
 </body>
 
 </html>

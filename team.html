@@ -136,7 +136,7 @@
     <!-- Header content removed as requested -->
     <div class="expert-text">
       <h2 class="heading">Our Team</h2>
-     <!--  <p>Verify Ads provides highly experienced virtual assistants with subject matter expertise across a wide
+      <!--  <p>Verify Ads provides highly experienced virtual assistants with subject matter expertise across a wide
         selection of industries.</p> -->
     </div>
   </section>
@@ -148,7 +148,11 @@
           <img src="./assets/img/Pabitra sir.jpg" alt="Graphic Designers">
           <h3>Pabitra Mohan Pradhan</h3>
           <h4>DIGITAL DIRECTOR</h4>
-          <p>"As the co-founder of Verify Ads, I’m driven by the desire for implementing innovative digital advertising techniques to provide tangible results. I focus on the development of strategic and efficient marketing and adverting tactics by application of modern technology for the benefit of our clients in the digital world. I aim to transform brand communication and deliver valuable, engaging consumer experiences that contribute to business success across the digital landscape. "</p>
+          <p>"As the co-founder of Verify Ads, I’m driven by the desire for implementing innovative digital advertising
+            techniques to provide tangible results. I focus on the development of strategic and efficient marketing and
+            adverting tactics by application of modern technology for the benefit of our clients in the digital world. I
+            aim to transform brand communication and deliver valuable, engaging consumer experiences that contribute to
+            business success across the digital landscape. "</p>
 
         </div>
       </div>
@@ -192,15 +196,15 @@
   <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
   <script>
     // Load the footer dynamically
-    document.addEventListener("DOMContentLoaded", function() {
-        fetch("footer.html")
-            .then(response => response.text())
-            .then(data => {
-                document.getElementById("footer-placeholder").innerHTML = data;
-            })
-            .catch(error => console.error('Error loading footer:', error));
+    document.addEventListener("DOMContentLoaded", function () {
+      fetch("footer.html")
+        .then(response => response.text())
+        .then(data => {
+          document.getElementById("footer-placeholder").innerHTML = data;
+        })
+        .catch(error => console.error('Error loading footer:', error));
     });
-</script>
+  </script>
 </body>
 
 </html>

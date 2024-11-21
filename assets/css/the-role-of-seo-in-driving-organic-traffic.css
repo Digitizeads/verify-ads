@@ -1062,6 +1062,7 @@ body {
 
 .seo-header h1 {
     font-size: 2rem;
+    color: #f4a261 !important; /* Apply color with !important */
 }
 
 .seo-nav ul {
@@ -1095,6 +1096,7 @@ body {
 .seo-post-title {
     font-size: 2rem;
     margin-bottom: 1rem;
+    color: #333 !important; /* Apply color with !important */
 }
 
 .seo-meta {
@@ -1106,7 +1108,7 @@ body {
 .seo-intro-text {
     font-size: 1.1rem;
     margin-bottom: 1.5rem;
-    color: #444;
+    color: #444 !important; /* Apply color with !important */
 }
 
 .seo-post-image {
@@ -1119,8 +1121,12 @@ body {
     margin-bottom: 1.5rem;
 }
 
-.seo-body-text p{
-    color: black;
+.seo-body-text p {
+    color: #000000 !important; /* Apply color with !important */
+}
+
+.seo-body-text h3 {
+    color: #1f1f1f !important; /* Apply color with !important */
 }
 
 /* Footer styles */
@@ -1161,10 +1167,12 @@ body {
 
     .seo-post-title {
         font-size: 1.5rem;
+        color: #333;
     }
 
     .seo-intro-text {
         font-size: 1rem;
+        color: #444;
     }
 
     .seo-footer {
@@ -1198,10 +1206,12 @@ body {
 
     .seo-post-title {
         font-size: 1.8rem;
+        color: #333;
     }
 
     .seo-intro-text {
         font-size: 1.1rem;
+        color: #444;
     }
 }
 
@@ -1213,6 +1223,7 @@ body {
 
     .seo-header h1 {
         font-size: 2rem;
+        color: #f4a261; /* Apply color with !important */
     }
 
     .seo-nav ul {
@@ -1227,10 +1238,12 @@ body {
 
     .seo-post-title {
         font-size: 2rem;
+        color: #333;
     }
 
     .seo-intro-text {
         font-size: 1.1rem;
+        color: #444;
     }
 }
 
@@ -1242,6 +1255,7 @@ body {
 
     .seo-header h1 {
         font-size: 2.5rem;
+        color: #f4a261; /* Apply color with !important */
     }
 
     .seo-nav ul {
@@ -1255,9 +1269,11 @@ body {
 
     .seo-post-title {
         font-size: 2.5rem;
+        color: #333;
     }
 
     .seo-intro-text {
         font-size: 1.2rem;
+        color: #444;
     }
 }

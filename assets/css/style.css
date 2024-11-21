@@ -1771,6 +1771,114 @@ footer {
 }
 
 
+/* Default styles (for small screens) */
+.marquee-container {
+  background-color: #f1f1f1; 
+  padding: 10px;
+  font-size: 16px;
+  color: #6c757d;
+  font-family: Arial, sans-serif;
+  border-top: 3px solid #ddd; 
+  border-bottom: 3px solid #ddd; 
+  width: 100%;
+  display: flex;
+  align-items: center;
+  box-sizing: border-box;
+}
+
+.marquee-container h2 {
+  margin: 0;
+  padding: 0 15px;
+  font-size: 18px;
+  font-weight: bold;
+  color: #4a4a4a;
+  text-transform: uppercase;
+  font-family: Arial, sans-serif;
+  border-right: 2px solid #ddd;
+  flex-shrink: 0;
+}
+
+.marquee-text {
+  flex-grow: 1;
+  overflow: hidden;
+  margin-top: 1px;
+}
+
+.marquee-text marquee {
+  font-size: 16px;
+  color: #666;
+  font-weight: normal;
+}
+
+/* Mobile (phones) */
+@media (max-width: 600px) {
+  .marquee-container {
+    padding: 8px;
+    font-size: 14px;
+  }
+
+  .marquee-container h2 {
+    font-size: 16px;
+    padding: 0 10px;
+  }
+
+  .marquee-text marquee {
+    font-size: 14px;
+  }
+}
+
+/* Tablet (small screens) */
+@media (max-width: 768px) {
+  .marquee-container {
+    padding: 10px;
+    font-size: 15px;
+  }
+
+  .marquee-container h2 {
+    font-size: 17px;
+    padding: 0 12px;
+  }
+
+  .marquee-text marquee {
+    font-size: 15px;
+  }
+}
+
+/* Desktop (larger screens) */
+@media (min-width: 1024px) {
+  .marquee-container {
+    padding: 12px;
+    font-size: 18px;
+  }
+
+  .marquee-container h2 {
+    font-size: 20px;
+    padding: 0 20px;
+  }
+
+  .marquee-text marquee {
+    font-size: 18px;
+  }
+}
+
+/* Large Desktop */
+@media (min-width: 1280px) {
+  .marquee-container {
+    padding: 15px;
+    font-size: 20px;
+  }
+
+  .marquee-container h2 {
+    font-size: 22px;
+    padding: 0 25px;
+  }
+
+  .marquee-text marquee {
+    font-size: 20px;
+  }
+}
+
+
 
 /*-----------------------------------*\ 
  * #RESPONSIVE

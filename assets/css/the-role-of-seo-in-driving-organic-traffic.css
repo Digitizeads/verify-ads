@@ -206,6 +206,7 @@ body {
   body {
     background: var(--white);
     overflow-x: hidden;
+    color: black;
   }
   
   ::-webkit-scrollbar {
@@ -1122,7 +1123,7 @@ body {
 }
 
 .seo-body-text p {
-    color: #000000 !important; /* Apply color with !important */
+    color: #ff0000 !important; /* Apply color with !important */
 }
 
 .seo-body-text h3 {

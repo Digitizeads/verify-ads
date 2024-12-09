@@ -861,7 +861,6 @@ header .container {
   display: block;
 }
 
-
 .blog-container {
   display: flex;
   width: 90%;
@@ -1007,39 +1006,39 @@ header .container {
 /* For tablets and smaller screens */
 @media (max-width: 768px) {
   .blog-container {
-      flex-direction: column;
+    flex-direction: column;
   }
 
   .sidebar {
-      width: 100%;
+    width: 100%;
   }
 
   .content {
-      width: 100%;
+    width: 100%;
   }
 }
 
 /* For mobile screens */
 @media (max-width: 480px) {
   .post {
-      flex-direction: column;
+    flex-direction: column;
   }
 
   .post img {
-      width: 100%;
-      height: auto;
+    width: 100%;
+    height: auto;
   }
 
   .search-bar input {
-      padding: 10px;
+    padding: 10px;
   }
 
   .tag-button {
-      padding: 6px 10px;
-      font-size: 14px;
+    padding: 6px 10px;
+    font-size: 14px;
   }
 
   .post-content h2 {
-      font-size: 20px;
+    font-size: 20px;
   }
 }

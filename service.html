@@ -223,15 +223,15 @@
   <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
   <script>
     // Load the footer dynamically
-    document.addEventListener("DOMContentLoaded", function() {
-        fetch("footer.html")
-            .then(response => response.text())
-            .then(data => {
-                document.getElementById("footer-placeholder").innerHTML = data;
-            })
-            .catch(error => console.error('Error loading footer:', error));
+    document.addEventListener("DOMContentLoaded", function () {
+      fetch("footer.html")
+        .then(response => response.text())
+        .then(data => {
+          document.getElementById("footer-placeholder").innerHTML = data;
+        })
+        .catch(error => console.error('Error loading footer:', error));
     });
-</script>
+  </script>
 </body>
 
 </html>

@@ -388,8 +388,64 @@ body {
 
 /* Media Queries */
 
+/* Small screen 375 pixes */
+@media (max-width: 375px) {
+  .contact-info {
+    gap: 10px !important;
+  }
+  .social-icons {
+    padding: 10px 0px 5px 0px;
+  }
+  .logo {
+    height: 50px !important;
+    width: 140px !important;
+  }
+  .hbanner {
+    height: 200px;
+    width: 300px;
+    margin-top: 50px;
+  }
+  .hero {
+    padding: 20px 20px 0px 20px !important;
+  }
+  .hero-title {
+    font-size: 30px;
+  }
+  .about {
+    margin-top: -20px;
+    margin-bottom: -100px;
+  }
+  .explore-more-container {
+    margin-top: 35px !important;
+  }
+  .explore {
+    margin-top: 10px;
+  }
+  .carousel {
+    margin-left: 60px;
+  }
+  .role-card p {
+    text-align: justify;
+  }
+  .testimonial-para {
+    text-align: justify;
+  }
+  .newsletter-container {
+    max-width: 100%;
+  }
+
+  .input-container {
+    flex-direction: column;
+    gap: 5px;
+  }
+
+  .email-input, .btn {
+    width: 50%;
+  }
+}
+
 /* Small Devices (phones) */
-@media (max-width: 767px) {
+@media (max-width: 768px) {
   .top-bar {
     flex-direction: column;
     padding: 10px;
@@ -414,7 +470,7 @@ body {
 }
 
 /* Tablets (768px to 1024px) */
-@media (min-width: 768px) and (max-width: 1024px) {
+@media (min-width: 769px) and (max-width: 1024px) {
   .top-bar {
     padding: 10px 40px; /* Adjust padding for tablets */
     font-size: 13px;

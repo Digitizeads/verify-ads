@@ -662,6 +662,7 @@
   font-size: 1.2rem;
   color: #2f3a49;
   line-height: 1.5;
+  text-align: justify;
 }
 
 .hero-image img {
@@ -735,6 +736,7 @@
 .about-content p {
   font-size: 1.1rem;
   color: hsl(231, 61%, 22%);
+  text-align: justify;
 }
 
 .about-image img {
@@ -773,6 +775,7 @@
   font-size: 1.2rem;
   color: #2f3a49;
   line-height: 1.5;
+  text-align: justify;
 }
 
 .our-story-image img {

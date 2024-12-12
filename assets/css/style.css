@@ -576,18 +576,78 @@ body {
 
   .contact-info {
     flex-direction: column;
-    gap: 15px;
+    gap: 10px;
     text-align: center;
   }
 
   .social-icons {
     justify-content: center;
     gap: 15px;
+    padding-top: 10px;
   }
 
   .social-icon {
     width: 30px;
     height: 30px;
+  }
+
+  .hero {
+    padding-top: 30px !important;
+  }
+
+  .hero-title {
+    font-size: 33px;
+  }
+
+  .started {
+    padding: 20px 10px;
+  }
+
+  .hbanner {
+    height: 200px;
+    width: 400px;
+    margin-top: 50px;
+  }
+
+  .features .h2 {
+    margin-top: -80px;
+  }
+
+  .about {
+    margin-top: -80px;
+  }
+
+  .carousel-container {
+    margin-bottom: 50px !important;
+  }
+
+  .explore {
+    margin-top: 25px;
+  }
+
+  .section-text {
+    margin-bottom: 50px !important;
+  }
+
+  .expert {
+    margin-top: -70px !important;
+  }
+
+  .footer-link-box {
+    display: flex;
+  }
+  .footer-link-list {
+    width: 33%;
+  }
+  h4 link-title {
+    display: block ruby;
+  }
+  .office-address {
+    font-size: 14px;
+    width: 33% !important;
+  }
+  .footer-contact {
+    font-size: 12px;
   }
 }
 
